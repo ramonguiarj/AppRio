@@ -493,7 +493,13 @@ function RioGuideApp() {
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "20px 20px 0" }}>
         <img src={LOGO_MONOGRAM} alt="RV" style={{ width: 52, height: 52, borderRadius: "50%", objectFit: "cover" }} />
         <img src={LOGO_WORDMARK} alt="RamonGuia" style={{ height: 48, objectFit: "contain", flex: 1, minWidth: 0 }} />
-        <label style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 12 }}><select aria-label={language === "en" ? "Language" : language === "es" ? "Idioma" : "Idioma"} value={language} onChange={(e) => setAppLanguage(e.target.value)} style={{ background: "#0C3A3E", color: "#E1DCC6", border: "1px solid rgba(225,220,198,0.25)", borderRadius: 8, padding: "8px 6px" }}><option value="pt">Português</option><option value="en">English</option><option value="es">Español</option></select></label>
+        <div role="group" aria-label={language === "en" ? "Choose language" : language === "es" ? "Elegir idioma" : "Escolher idioma"} style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          {[{ code: "pt", flag: "🇧🇷", label: "Português" }, { code: "en", flag: "🇺🇸", label: "English" }, { code: "es", flag: "🇪🇸", label: "Español" }].map((item) => (
+            <button key={item.code} type="button" onClick={() => setAppLanguage(item.code)} aria-label={item.label} aria-pressed={language === item.code} title={item.label} style={{ width: 38, height: 38, padding: 0, borderRadius: 10, border: language === item.code ? "2px solid #76C339" : "1px solid rgba(225,220,198,0.25)", background: language === item.code ? "rgba(118,195,57,0.14)" : "#0C3A3E", fontSize: 21, lineHeight: 1, cursor: "pointer" }}>
+              {item.flag}
+            </button>
+          ))}
+        </div>
       </div>
 
       {showIntro && (
