@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
+import { useSmartSearch } from "./hooks/useSmartSearch.js";
 import { MapPin, Navigation, Star, ShieldCheck, Compass, Loader2, X, Sunrise, Sunset, Info, Map as MapIcon, List } from "lucide-react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
@@ -379,7 +380,44 @@ function MapView({ items, coords, onSelect }) {
   );
 }
 
-export default function RioGuideApp() {
+const COPY = {
+  pt: {
+    "Primeira vez no Rio?":"Primeira vez no Rio?","Esse é o seu roteiro com o que há de melhor e mais seguro pra descobrir a cidade como um carioca. Escolha um tópico abaixo pra começar.":"Esse é o seu roteiro para descobrir a cidade. Escolha um tópico abaixo para começar.",
+    "Usar minha localização para ver distâncias":"Usar minha localização para ver distâncias","Localizando...":"Localizando...","Mostrando distâncias a partir da sua localização":"Mostrando distâncias a partir da sua localização","Não consegui acessar sua localização. Ative a permissão de GPS e tente de novo.":"Não consegui acessar sua localização. Ative a permissão de GPS e tente de novo.",
+    "Lista":"Lista","Mapa":"Mapa","Buscar por nome, bairro ou tipo...":"Buscar por nome, bairro ou tipo...","Informações gerais: preços, horários e avaliações podem mudar. Confirme os detalhes diretamente com o estabelecimento antes de sair.":"Informações gerais: preços, horários e avaliações podem mudar. Confirme os detalhes diretamente com o estabelecimento antes de sair.",
+    "Dicas essenciais pra quem chega agora":"Dicas essenciais pra quem chega agora","Área turística e movimentada":"Informações gerais do local","Você está aqui":"Você está aqui","de você":"de você","Ver rota no Google Maps":"Ver rota no Google Maps","Um pouco de história":"Um pouco de história",
+    "Pontos Turísticos":"Pontos Turísticos","Hospedagem":"Hospedagem","Alimentação":"Alimentação","Diversão":"Diversão","Praias":"Praias","Compras":"Compras","Transporte":"Transporte","Serviços":"Serviços","Sobre / Serviços":"Sobre / Serviços",
+    "Todos":"Todos","Agenda da semana":"Agenda da semana","Café da manhã":"Café da manhã","Almoço":"Almoço","Jantar":"Jantar","Nascer do sol":"Nascer do sol","Pôr do sol":"Pôr do sol","Cultura e história":"Cultura e história","Aeroportos":"Aeroportos","Rodoviária":"Rodoviária","Hospitais":"Hospitais","Câmbio":"Câmbio","Lembrancinhas":"Lembrancinhas","Shoppings":"Shoppings",
+    "Esse é o seu roteiro para descobrir a cidade. Escolha um tópico abaixo para começar.":"Esse é o seu roteiro para descobrir a cidade. Escolha um tópico abaixo para começar."
+  },
+  en: {
+    "Primeira vez no Rio?":"First time in Rio?","Esse é o seu roteiro com o que há de melhor e mais seguro pra descobrir a cidade como um carioca. Escolha um tópico abaixo pra começar.":"Your guide to discovering the city. Choose a topic below to get started.",
+    "Usar minha localização para ver distâncias":"Use my location to see distances","Localizando...":"Locating...","Mostrando distâncias a partir da sua localização":"Showing distances from your location","Não consegui acessar sua localização. Ative a permissão de GPS e tente de novo.":"Could not access your location. Enable GPS permission and try again.",
+    "Lista":"List","Mapa":"Map","Buscar por nome, bairro ou tipo...":"Search by name, neighborhood, or type...","Informações gerais: preços, horários e avaliações podem mudar. Confirme os detalhes diretamente com o estabelecimento antes de sair.":"General information: prices, hours, and ratings may change. Confirm details with the venue before you go.",
+    "Dicas essenciais pra quem chega agora":"Essential tips for visitors","Área turística e movimentada":"General location information","Você está aqui":"You are here","de você":"from you","Ver rota no Google Maps":"Get directions on Google Maps","Um pouco de história":"A little history",
+    "Pontos Turísticos":"Attractions","Hospedagem":"Accommodation","Alimentação":"Food & Drink","Diversão":"Entertainment","Praias":"Beaches","Compras":"Shopping","Transporte":"Transport","Serviços":"Services","Sobre / Serviços":"About / Services",
+    "Todos":"All","Agenda da semana":"This week","Café da manhã":"Breakfast","Almoço":"Lunch","Jantar":"Dinner","Nascer do sol":"Sunrise","Pôr do sol":"Sunset","Cultura e história":"Culture & history","Aeroportos":"Airports","Rodoviária":"Bus station","Hospitais":"Hospitals","Câmbio":"Currency exchange","Lembrancinhas":"Souvenirs","Shoppings":"Shopping malls"
+  },
+  es: {
+    "Primeira vez no Rio?":"¿Primera vez en Río?","Esse é o seu roteiro com o que há de melhor e mais seguro pra descobrir a cidade como um carioca. Escolha um tópico abaixo pra começar.":"Tu guía para descubrir la ciudad. Elige un tema para empezar.",
+    "Usar minha localização para ver distâncias":"Usar mi ubicación para ver distancias","Localizando...":"Buscando ubicación...","Mostrando distâncias a partir da sua localização":"Mostrando distancias desde tu ubicación","Não consegui acessar sua localização. Ative a permissão de GPS e tente de novo.":"No se pudo acceder a tu ubicación. Activa el GPS e inténtalo de nuevo.",
+    "Lista":"Lista","Mapa":"Mapa","Buscar por nome, bairro ou tipo...":"Buscar por nombre, barrio o tipo...","Informações gerais: preços, horários e avaliações podem mudar. Confirme os detalhes diretamente com o estabelecimento antes de sair.":"Información general: los precios, horarios y valoraciones pueden cambiar. Confirma los detalles con el establecimiento antes de ir.",
+    "Dicas essenciais pra quem chega agora":"Consejos esenciales para visitantes","Área turística e movimentada":"Información general del lugar","Você está aqui":"Estás aquí","de você":"desde aquí","Ver rota no Google Maps":"Cómo llegar con Google Maps","Um pouco de história":"Un poco de historia",
+    "Pontos Turísticos":"Lugares de interés","Hospedagem":"Alojamiento","Alimentação":"Comida","Diversão":"Entretenimiento","Praias":"Playas","Compras":"Compras","Transporte":"Transporte","Serviços":"Servicios","Sobre / Serviços":"Acerca de / Servicios",
+    "Todos":"Todos","Agenda da semana":"Agenda de la semana","Café da manhã":"Desayuno","Almoço":"Almuerzo","Jantar":"Cena","Nascer do sol":"Amanecer","Pôr do sol":"Atardecer","Cultura e história":"Cultura e historia","Aeroportos":"Aeropuertos","Rodoviária":"Estación de autobuses","Hospitais":"Hospitales","Câmbio":"Cambio de moneda","Lembrancinhas":"Recuerdos","Shoppings":"Centros comerciales"
+  }
+};
+const translate = (lang, text) => COPY[lang]?.[text] || text;
+const TOPIC_BLURBS = {
+  en: { hospedagem: "Well-rated hotels in central Rio and the South Zone, with estimated price ranges.", alimentacao: "From breakfast to dinner: cafés and restaurants around the city.", diversao: "Live music and local nightlife. Check venue schedules before heading out.", turismo: "Rio landmarks with brief visitor information.", praias: "Beaches from the South Zone to Barra and the western coast.", compras: "Markets, souvenir shops, and shopping malls.", transporte: "Ways to get around Rio: metro, train, VLT, buses, and taxis.", servicos: "Airports, bus station, hospitals, and currency exchange.", sobre: "Learn about Ramon’s guided tours and photography experiences." },
+  es: { hospedagem: "Hoteles bien valorados en el centro y la Zona Sur, con precios estimados.", alimentacao: "Del desayuno a la cena: cafeterías y restaurantes por la ciudad.", diversao: "Música en vivo y vida nocturna. Consulta la programación antes de ir.", turismo: "Lugares emblemáticos de Río con información para visitantes.", praias: "Playas desde la Zona Sur hasta Barra y la costa oeste.", compras: "Mercados, tiendas de recuerdos y centros comerciales.", transporte: "Cómo moverse por Río: metro, tren, VLT, autobuses y taxis.", servicos: "Aeropuertos, estación de autobuses, hospitales y cambio de moneda.", sobre: "Conoce los paseos guiados y las experiencias fotográficas de Ramon." }
+};
+function RioGuideApp() {
+  const [language, setLanguage] = useState(() => {
+    try { return ["pt", "en", "es"].includes(localStorage.getItem("apprio-language")) ? localStorage.getItem("apprio-language") : "pt"; }
+    catch { return "pt"; }
+  });
+  const tx = (text) => translate(language, text);
   const [activeTopic, setActiveTopic] = useState("turismo");
   const [activeSub, setActiveSub] = useState("todos");
   const [coords, setCoords] = useState(null);
@@ -387,6 +425,12 @@ export default function RioGuideApp() {
   const [selected, setSelected] = useState(null);
   const [showIntro, setShowIntro] = useState(true);
   const [view, setView] = useState("lista");
+  const [searchText, setSearchText] = useState("");
+  const searchBase = useMemo(() => PLACES.filter((p) => p.cat === activeTopic && (activeTopic !== "alimentacao" || activeSub === "todos" || (p.meals || []).includes(activeSub)) && (!["turismo", "servicos", "compras"].includes(activeTopic) || activeSub === "todos" || p.sub === activeSub)), [activeTopic, activeSub]);
+  const search = useSmartSearch(searchBase, activeTopic, language);
+  const setAppLanguage = (value) => { setLanguage(value); try { localStorage.setItem("apprio-language", value); } catch {} };
+  useEffect(() => { setSearchText(""); search.buscar(""); }, [activeTopic, activeSub]);
+  useEffect(() => { if (searchText.trim()) search.buscar(searchText); }, [language]);
 
   const requestLocation = () => {
     if (!navigator.geolocation) { setLocStatus("error"); return; }
@@ -401,7 +445,7 @@ export default function RioGuideApp() {
   const changeTopic = (id) => { setActiveTopic(id); setActiveSub("todos"); };
 
   const list = useMemo(() => {
-    let items = PLACES.filter((p) => p.cat === activeTopic);
+    let items = search.results.filter((p) => p.cat === activeTopic);
     if (activeTopic === "alimentacao" && activeSub !== "todos") {
       items = items.filter((p) => p.meals && p.meals.includes(activeSub));
     }
@@ -412,7 +456,7 @@ export default function RioGuideApp() {
       return items.map((p) => ({ ...p, dist: haversine(coords.lat, coords.lng, p.lat, p.lng) })).sort((a, b) => a.dist - b.dist);
     }
     return items.sort((a, b) => b.rating - a.rating);
-  }, [activeTopic, activeSub, coords]);
+  }, [activeTopic, activeSub, coords, search.results]);
 
   const currentTopic = TOPICS.find((t) => t.id === activeTopic);
   const subtabs = SUBTABS[activeTopic];
@@ -426,7 +470,7 @@ export default function RioGuideApp() {
   };
 
   return (
-    <div style={{ minHeight: "100vh", background: "#042F35", fontFamily: "'Work Sans', sans-serif", color: "#E1DCC6", paddingBottom: 40 }}>
+    <div lang={language === "pt" ? "pt-BR" : language} style={{ minHeight: "100vh", background: "#042F35", fontFamily: "'Work Sans', sans-serif", color: "#E1DCC6", paddingBottom: 40 }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; }
@@ -446,9 +490,10 @@ export default function RioGuideApp() {
       `}</style>
 
       {/* Top bar with brand */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "20px 20px 0" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "20px 20px 0" }}>
         <img src={LOGO_MONOGRAM} alt="RV" style={{ width: 52, height: 52, borderRadius: "50%", objectFit: "cover" }} />
-        <img src={LOGO_WORDMARK} alt="RamonGuia" style={{ height: 48, objectFit: "contain" }} />
+        <img src={LOGO_WORDMARK} alt="RamonGuia" style={{ height: 48, objectFit: "contain", flex: 1, minWidth: 0 }} />
+        <label style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 12 }}><select aria-label={language === "en" ? "Language" : language === "es" ? "Idioma" : "Idioma"} value={language} onChange={(e) => setAppLanguage(e.target.value)} style={{ background: "#0C3A3E", color: "#E1DCC6", border: "1px solid rgba(225,220,198,0.25)", borderRadius: 8, padding: "8px 6px" }}><option value="pt">Português</option><option value="en">English</option><option value="es">Español</option></select></label>
       </div>
 
       {showIntro && (
@@ -459,9 +504,9 @@ export default function RioGuideApp() {
           <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
             <img src={LOGO_STAMP} alt="Bem vindo ao Rio" style={{ width: 52, borderRadius: 8, flexShrink: 0 }} />
             <div>
-              <div style={{ fontFamily: "'Fraunces', serif", fontSize: 18, fontWeight: 600, marginBottom: 4 }}>Primeira vez no Rio?</div>
+              <div style={{ fontFamily: "'Fraunces', serif", fontSize: 18, fontWeight: 600, marginBottom: 4 }}>{tx("Primeira vez no Rio?")}</div>
               <p style={{ fontSize: 13, lineHeight: 1.5, color: "rgba(225,220,198,0.75)", margin: 0 }}>
-                Esse é o seu roteiro com o que há de melhor e mais seguro pra descobrir a cidade como um carioca. Escolha um tópico abaixo pra começar.
+                {tx("Esse é o seu roteiro com o que há de melhor e mais seguro pra descobrir a cidade como um carioca. Escolha um tópico abaixo pra começar.")}
               </p>
             </div>
           </div>
@@ -473,29 +518,29 @@ export default function RioGuideApp() {
       <div style={{ padding: "16px 20px 4px" }}>
         {locStatus !== "ok" ? (
           <button className="locBtn" onClick={requestLocation}>
-            {locStatus === "loading" ? (<><Loader2 size={16} style={{ animation: "spin 1s linear infinite" }} /> Localizando...</>) : (<><Navigation size={16} /> Usar minha localização para ver distâncias</>)}
+            {locStatus === "loading" ? (<><Loader2 size={16} style={{ animation: "spin 1s linear infinite" }} /> {tx("Localizando...")}</>) : (<><Navigation size={16} /> {tx("Usar minha localização para ver distâncias")}</>)}
           </button>
         ) : (
           <div style={{ display: "flex", alignItems: "center", gap: 8, color: "#76C339", fontSize: 13, fontWeight: 600, padding: "8px 4px" }}>
-            <MapPin size={15} /> Mostrando distâncias a partir da sua localização
+            <MapPin size={15} /> {tx("Mostrando distâncias a partir da sua localização")}
           </div>
         )}
-        {locStatus === "error" && <p style={{ color: "#E27D60", fontSize: 12, marginTop: 8 }}>Não consegui acessar sua localização. Ative a permissão de GPS e tente de novo.</p>}
+        {locStatus === "error" && <p style={{ color: "#E27D60", fontSize: 12, marginTop: 8 }}>{tx("Não consegui acessar sua localização. Ative a permissão de GPS e tente de novo.")}</p>}
       </div>
 
       <div className="scrollRow" style={{ display: "flex", gap: 8, overflowX: "auto", padding: "12px 20px" }}>
         {TOPICS.map((t) => (
-          <button key={t.id} className={"chip " + (activeTopic === t.id ? "active" : "")} onClick={() => changeTopic(t.id)}>{t.icon} {t.label}</button>
+          <button key={t.id} className={"chip " + (activeTopic === t.id ? "active" : "")} onClick={() => changeTopic(t.id)}>{t.icon} {tx(t.label)}</button>
         ))}
       </div>
 
       {currentTopic && (
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12, padding: "0 20px", margin: "4px 0 4px" }}>
-          <p style={{ margin: 0, fontSize: 13, color: "rgba(225,220,198,0.6)", flex: 1 }}>{currentTopic.blurb}</p>
+          <p style={{ margin: 0, fontSize: 13, color: "rgba(225,220,198,0.6)", flex: 1 }}>{language === "pt" ? currentTopic.blurb : TOPIC_BLURBS[language]?.[activeTopic] || translate(language, currentTopic.label)}</p>
           {activeTopic !== "sobre" && activeTopic !== "transporte" && !(activeTopic === "diversao" && activeSub === "agenda") && (
             <div className="viewToggle">
-              <button className={"viewBtn " + (view === "lista" ? "active" : "")} onClick={() => setView("lista")}><List size={13} /> Lista</button>
-              <button className={"viewBtn " + (view === "mapa" ? "active" : "")} onClick={() => setView("mapa")}><MapIcon size={13} /> Mapa</button>
+              <button className={"viewBtn " + (view === "lista" ? "active" : "")} onClick={() => setView("lista")}><List size={13} /> {tx("Lista")}</button>
+              <button className={"viewBtn " + (view === "mapa" ? "active" : "")} onClick={() => setView("mapa")}><MapIcon size={13} /> {tx("Mapa")}</button>
             </div>
           )}
         </div>
@@ -580,15 +625,15 @@ export default function RioGuideApp() {
         </div>
       )}
 
-      {(activeTopic === "sobre" || activeTopic === "transporte" || (activeTopic === "diversao" && activeSub === "agenda")) ? null : view === "mapa" ? (
+      {(activeTopic === "sobre" || activeTopic === "transporte" || (activeTopic === "diversao" && activeSub === "agenda")) ? null : <><div style={{ padding: "10px 20px 0" }}><input type="search" value={searchText} maxLength={120} onChange={(e) => { setSearchText(e.target.value); search.buscar(e.target.value); }} placeholder={tx("Buscar por nome, bairro ou tipo...")} aria-label={tx("Buscar por nome, bairro ou tipo...")} style={{ width: "100%", padding: "12px 14px", borderRadius: 12, border: "1px solid rgba(225,220,198,0.2)", background: "#0C3A3E", color: "#E1DCC6", fontSize: 14 }} />{search.carregando && <p role="status" style={{ fontSize: 12 }}>{tx("Localizando...")}</p>}{search.erro && <p role="alert" style={{ color: "#E27D60", fontSize: 12 }}>{search.erro}</p>}{search.origem === "google" && <p style={{ color: "#E8B86D", fontSize: 12 }}>{language === "en" ? "Google Places result; check details before visiting." : language === "es" ? "Resultado de Google Places; confirma los detalles antes de ir." : "Resultado do Google Places; confirme os detalhes antes de visitar."}</p>}</div>{view === "mapa" ? (
         <div style={{ padding: "10px 20px" }}>
           <MapView items={list} coords={coords} onSelect={openFromMap} />
           <p style={{ fontSize: 11, color: "rgba(225,220,198,0.4)", marginTop: 8 }}>Toque em um pino pra ver o nome no mapa, ou nele na lista pra ver todos os detalhes. {coords ? "O ponto azul é você." : ""}</p>
         </div>
       ) : (
         <div style={{ padding: "10px 20px" }}>
-          {list.map((p) => (
-            <div className="card" key={p.id} onClick={() => setSelected(p)}>
+          {list.length === 0 && !search.carregando ? <p style={{ fontSize: 14, opacity: 0.75 }}>{language === "en" ? "No results found." : language === "es" ? "No se encontraron resultados." : "Nenhum resultado encontrado."}</p> : list.map((p) => (
+            <div className="card" key={p.id} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelected(p); } }} onClick={() => setSelected(p)}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontFamily: "'Fraunces', serif", fontSize: 17, fontWeight: 600 }}>{p.name}</div>
@@ -601,25 +646,26 @@ export default function RioGuideApp() {
                 </div>
                 <div style={{ textAlign: "right", marginLeft: 10 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 3, color: "#76C339", fontSize: 13, fontWeight: 700 }}>
-                    <Star size={12} fill="#76C339" /> {p.rating}
+                    <Star size={12} fill="#76C339" /> {p.rating || "—"}
                   </div>
                   {p.dist !== undefined && <div style={{ color: "#E1DCC6", fontSize: 12.5, fontWeight: 600, marginTop: 4 }}>{formatDist(p.dist)}</div>}
                 </div>
               </div>
               <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 6 }}>
                 <ShieldCheck size={13} color="#76C339" />
-                <span style={{ fontSize: 12, color: "rgba(225,220,198,0.55)" }}>Área turística e movimentada</span>
+                <span style={{ fontSize: 12, color: "rgba(225,220,198,0.55)" }}>{tx("Área turística e movimentada")}</span>
               </div>
             </div>
           ))}
-        </div>
-      )}
+        </div>)}
+      </>}
 
       <div style={{ padding: "8px 20px 0" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
           <Info size={16} color="#76C339" />
-          <span style={{ fontFamily: "'Fraunces', serif", fontSize: 16, fontWeight: 600 }}>Dicas essenciais pra quem chega agora</span>
+          <span style={{ fontFamily: "'Fraunces', serif", fontSize: 16, fontWeight: 600 }}>{tx("Dicas essenciais pra quem chega agora")}</span>
         </div>
+        <p style={{ fontSize: 11, lineHeight: 1.5, color: "rgba(225,220,198,0.55)", margin: "0 0 12px" }}>{tx("Informações gerais: preços, horários e avaliações podem mudar. Confirme os detalhes diretamente com o estabelecimento antes de sair.")}</p>
         {ESSENTIALS.map((e, i) => (
           <div key={i} style={{ display: "flex", gap: 12, marginBottom: 12, background: "#0C3A3E", borderRadius: 12, padding: 14 }}>
             <span style={{ fontSize: 20 }}>{e.icon}</span>
@@ -655,7 +701,7 @@ export default function RioGuideApp() {
             <p style={{ fontSize: 14, lineHeight: 1.5, color: "#E1DCC6", marginBottom: selected.historia ? 10 : 16 }}>{selected.tip}</p>
             {selected.historia && (
               <div style={{ background: "rgba(225,220,198,0.06)", borderRadius: 10, padding: 12, marginBottom: 16 }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#76C339", letterSpacing: 0.5, textTransform: "uppercase", marginBottom: 4 }}>Um pouco de história</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#76C339", letterSpacing: 0.5, textTransform: "uppercase", marginBottom: 4 }}>{tx("Um pouco de história")}</div>
                 <p style={{ fontSize: 13, lineHeight: 1.5, color: "rgba(225,220,198,0.8)", margin: 0 }}>{selected.historia}</p>
               </div>
             )}
