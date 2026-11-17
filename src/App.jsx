@@ -511,12 +511,12 @@ export default function RioGuideApp() {
   const toggleSaved = (id) => setSavedIds((prev) => prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]);
   const moveSaved = (id, offset) => setSavedIds((prev) => { const from = prev.indexOf(id); const to = from + offset; if (from < 0 || to < 0 || to >= prev.length) return prev; const next = [...prev]; [next[from], next[to]] = [next[to], next[from]]; return next; });
   const itineraryRoute = savedPlaces.length === 1 ? `https://www.google.com/maps/search/?api=1&query=${savedPlaces[0].lat},${savedPlaces[0].lng}` : savedPlaces.length > 1 ? `https://www.google.com/maps/dir/?api=1&origin=${savedPlaces[0].lat},${savedPlaces[0].lng}&destination=${savedPlaces[savedPlaces.length - 1].lat},${savedPlaces[savedPlaces.length - 1].lng}${savedPlaces.length > 2 ? `&waypoints=${savedPlaces.slice(1, -1).map((p) => `${p.lat},${p.lng}`).join("%7C")}` : ""}` : "";
-  const neighborhoods = useMemo(() => [...new Set([...searchBase, ...search.results].map((p) => p.bairro).filter(Boolean))].sort((a, b) => a.localeCompare(b, language)), [searchBase, search.results, language]);
   const guideCopy = (kind, index, field, fallback) => GUIDE_TRANSLATIONS[language]?.[kind]?.[index]?.[field] || fallback;
   const placeText = (place, field) => PLACE_TRANSLATIONS[language]?.[place.id]?.[field] || place[field];
   useEffect(() => { try { localStorage.setItem("apprio-saved-places", JSON.stringify(savedIds)); } catch {} }, [savedIds]);
   const searchBase = useMemo(() => PLACES.filter((p) => p.cat === activeTopic && (activeTopic !== "alimentacao" || activeSub === "todos" || (p.meals || []).includes(activeSub)) && (!["turismo", "servicos", "compras"].includes(activeTopic) || activeSub === "todos" || p.sub === activeSub)), [activeTopic, activeSub]);
   const search = useSmartSearch(searchBase, activeTopic, language);
+  const neighborhoods = useMemo(() => [...new Set([...searchBase, ...search.results].map((p) => p.bairro).filter(Boolean))].sort((a, b) => a.localeCompare(b, language)), [searchBase, search.results, language]);
   const setAppLanguage = (value) => { setLanguage(value); try { localStorage.setItem("apprio-language", value); } catch {} };
   useEffect(() => { setSearchText(""); setFilterNeighborhood(""); search.buscar(""); }, [activeTopic, activeSub]);
   useEffect(() => { if (searchText.trim()) search.buscar(searchText); }, [language]);
