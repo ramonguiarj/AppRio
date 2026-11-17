@@ -387,7 +387,7 @@ const COPY = {
     "Lista":"Lista","Mapa":"Mapa","Buscar por nome, bairro ou tipo...":"Buscar por nome, bairro ou tipo...","Informações gerais: preços, horários e avaliações podem mudar. Confirme os detalhes diretamente com o estabelecimento antes de sair.":"Informações gerais: preços, horários e avaliações podem mudar. Confirme os detalhes diretamente com o estabelecimento antes de sair.",
     "Dicas essenciais pra quem chega agora":"Dicas essenciais pra quem chega agora","Área turística e movimentada":"Informações gerais do local","Você está aqui":"Você está aqui","de você":"de você","Ver rota no Google Maps":"Ver rota no Google Maps","Um pouco de história":"Um pouco de história",
     "Pontos Turísticos":"Pontos Turísticos","Hospedagem":"Hospedagem","Alimentação":"Alimentação","Diversão":"Diversão","Praias":"Praias","Compras":"Compras","Transporte":"Transporte","Serviços":"Serviços","Sobre / Serviços":"Sobre / Serviços",
-    "Todos":"Todos","Agenda da semana":"Agenda da semana","Café da manhã":"Café da manhã","Almoço":"Almoço","Jantar":"Jantar","Nascer do sol":"Nascer do sol","Pôr do sol":"Pôr do sol","Cultura e história":"Cultura e história","Aeroportos":"Aeroportos","Rodoviária":"Rodoviária","Hospitais":"Hospitais","Câmbio":"Câmbio","Lembrancinhas":"Lembrancinhas","Shoppings":"Shoppings",
+    "Todos":"Todos","Agenda da semana":"Agenda da semana","Café da manhã":"Café da manhã","Almoço":"Almoço","Jantar":"Jantar","Nascer do sol":"Nascer do sol","Pôr do sol":"Pôr do sol","Cultura e história":"Cultura e história","Aeroportos":"Aeroportos","Rodoviária":"Rodoviária","Hospitais":"Hospitais","Câmbio":"Câmbio","Lembrancinhas":"Lembrancinhas","Shoppings":"Shoppings","Mostrar filtros":"Mostrar filtros","Ocultar filtros":"Ocultar filtros","Qualquer bairro":"Qualquer bairro","Faixa de preço":"Faixa de preço","Qualquer faixa":"Qualquer faixa","Até R$ 100":"Até R$ 100","R$ 100 a R$ 500":"R$ 100 a R$ 500","Mais de R$ 500":"Mais de R$ 500","Os valores são estimativas e podem variar. Confirme antes de sair.":"Os valores são estimativas e podem variar. Confirme antes de sair.","Avaliação 4,5 ou mais":"Avaliação 4,5 ou mais","Somente locais com preço informado":"Somente locais com preço informado","Limpar filtros":"Limpar filtros","Abrir rota do roteiro":"Abrir rota do roteiro","Reordene os lugares com as setas. A rota abre no Google Maps.":"Reordene os lugares com as setas. A rota abre no Google Maps.","Estimativa; confirme o preço e o horário diretamente com o local.":"Estimativa; confirme o preço e o horário diretamente com o local.","Toque em um pino pra ver o nome no mapa, ou nele na lista pra ver todos os detalhes.":"Toque em um pino para ver o lugar.","Locais encontrados":"Locais encontrados","Buscar lugares e categorias":"Buscar por lugar ou categoria...",
     "Esse é o seu roteiro para descobrir a cidade. Escolha um tópico abaixo para começar.":"Esse é o seu roteiro para descobrir a cidade. Escolha um tópico abaixo para começar."
   },
   en: {
@@ -396,7 +396,7 @@ const COPY = {
     "Lista":"List","Mapa":"Map","Buscar por nome, bairro ou tipo...":"Search by name, neighborhood, or type...","Informações gerais: preços, horários e avaliações podem mudar. Confirme os detalhes diretamente com o estabelecimento antes de sair.":"General information: prices, hours, and ratings may change. Confirm details with the venue before you go.",
     "Dicas essenciais pra quem chega agora":"Essential tips for visitors","Área turística e movimentada":"General location information","Você está aqui":"You are here","de você":"from you","Ver rota no Google Maps":"Get directions on Google Maps","Um pouco de história":"A little history",
     "Pontos Turísticos":"Attractions","Hospedagem":"Accommodation","Alimentação":"Food & Drink","Diversão":"Entertainment","Praias":"Beaches","Compras":"Shopping","Transporte":"Transport","Serviços":"Services","Sobre / Serviços":"About / Services",
-    "Todos":"All","Agenda da semana":"This week","Café da manhã":"Breakfast","Almoço":"Lunch","Jantar":"Dinner","Nascer do sol":"Sunrise","Pôr do sol":"Sunset","Cultura e história":"Culture & history","Aeroportos":"Airports","Rodoviária":"Bus station","Hospitais":"Hospitals","Câmbio":"Currency exchange","Lembrancinhas":"Souvenirs","Shoppings":"Shopping malls"
+    "Todos":"All","Agenda da semana":"This week","Café da manhã":"Breakfast","Almoço":"Lunch","Jantar":"Dinner","Nascer do sol":"Sunrise","Pôr do sol":"Sunset","Cultura e história":"Culture & history","Aeroportos":"Airports","Rodoviária":"Bus station","Hospitais":"Hospitals","Câmbio":"Currency exchange","Lembrancinhas":"Souvenirs","Shoppings":"Shopping malls","Mostrar filtros":"Show filters","Ocultar filtros":"Hide filters","Qualquer bairro":"Any neighborhood","Faixa de preço":"Price range","Qualquer faixa":"Any range","Até R$ 100":"Up to R$ 100","R$ 100 a R$ 500":"R$ 100 to R$ 500","Mais de R$ 500":"Over R$ 500","Os valores são estimativas e podem variar. Confirme antes de sair.":"Prices are estimates and may vary. Confirm before you go.","Avaliação 4,5 ou mais":"Rating 4.5+","Somente locais com preço informado":"Only places with price information","Limpar filtros":"Clear filters","Abrir rota do roteiro":"Open itinerary route","Reordene os lugares com as setas. A rota abre no Google Maps.":"Reorder places with the arrows. The route opens in Google Maps.","Estimativa; confirme o preço e o horário diretamente com o local.":"Estimate; confirm prices and hours with the venue.","Toque em um pino pra ver o nome no mapa, ou nele na lista pra ver todos os detalhes.":"Tap a pin to see the place name.","O ponto azul indica sua localização.":"The blue dot shows your location.","Locais encontrados":"Places found","Ramon Viana — Guia e Fotógrafo":"Ramon Viana — Tour Guide and Photographer","Passeios guiados e ensaios fotográficos pelos pontos mais bonitos do Rio. Veja pacotes, fotos e feche seu passeio direto no site.":"Guided tours and photo sessions at Rio’s most beautiful spots. Explore packages and book directly on the website.","Abrir ramonguiarj.com":"Open ramonguiarj.com","Se a prévia acima não carregar, use o botão \"Abrir ramonguiarj.com\" para ver o site completo.":"If the preview does not load, use the button above to open the full website.","Programação sujeita a mudanças — confira sempre nas redes da casa antes de sair.":"Schedules can change. Check the venue’s social media before you go.","Buscar lugares e categorias":"Search places and categories..."
   },
   es: {
     "Primeira vez no Rio?":"¿Primera vez en Río?","Esse é o seu roteiro com o que há de melhor e mais seguro pra descobrir a cidade como um carioca. Escolha um tópico abaixo pra começar.":"Tu guía para descubrir la ciudad. Elige un tema para empezar.",
@@ -404,7 +404,81 @@ const COPY = {
     "Lista":"Lista","Mapa":"Mapa","Buscar por nome, bairro ou tipo...":"Buscar por nombre, barrio o tipo...","Informações gerais: preços, horários e avaliações podem mudar. Confirme os detalhes diretamente com o estabelecimento antes de sair.":"Información general: los precios, horarios y valoraciones pueden cambiar. Confirma los detalles con el establecimiento antes de ir.",
     "Dicas essenciais pra quem chega agora":"Consejos esenciales para visitantes","Área turística e movimentada":"Información general del lugar","Você está aqui":"Estás aquí","de você":"desde aquí","Ver rota no Google Maps":"Cómo llegar con Google Maps","Um pouco de história":"Un poco de historia",
     "Pontos Turísticos":"Lugares de interés","Hospedagem":"Alojamiento","Alimentação":"Comida","Diversão":"Entretenimiento","Praias":"Playas","Compras":"Compras","Transporte":"Transporte","Serviços":"Servicios","Sobre / Serviços":"Acerca de / Servicios",
-    "Todos":"Todos","Agenda da semana":"Agenda de la semana","Café da manhã":"Desayuno","Almoço":"Almuerzo","Jantar":"Cena","Nascer do sol":"Amanecer","Pôr do sol":"Atardecer","Cultura e história":"Cultura e historia","Aeroportos":"Aeropuertos","Rodoviária":"Estación de autobuses","Hospitais":"Hospitales","Câmbio":"Cambio de moneda","Lembrancinhas":"Recuerdos","Shoppings":"Centros comerciales"
+    "Todos":"Todos","Agenda da semana":"Agenda de la semana","Café da manhã":"Desayuno","Almoço":"Almuerzo","Jantar":"Cena","Nascer do sol":"Amanecer","Pôr do sol":"Atardecer","Cultura e história":"Cultura e historia","Aeroportos":"Aeropuertos","Rodoviária":"Estación de autobuses","Hospitais":"Hospitales","Câmbio":"Cambio de moneda","Lembrancinhas":"Recuerdos","Shoppings":"Centros comerciales","Mostrar filtros":"Mostrar filtros","Ocultar filtros":"Ocultar filtros","Qualquer bairro":"Cualquier barrio","Faixa de preço":"Rango de precio","Qualquer faixa":"Cualquier rango","Até R$ 100":"Hasta R$ 100","R$ 100 a R$ 500":"De R$ 100 a R$ 500","Mais de R$ 500":"Más de R$ 500","Os valores são estimativas e podem variar. Confirme antes de sair.":"Los precios son estimados y pueden variar. Confirma antes de salir.","Avaliação 4,5 ou mais":"Valoración 4,5 o más","Somente locais com preço informado":"Solo lugares con precio indicado","Limpar filtros":"Borrar filtros","Abrir rota do roteiro":"Abrir ruta del itinerario","Reordene os lugares com as setas. A rota abre no Google Maps.":"Reordena los lugares con las flechas. La ruta se abre en Google Maps.","Estimativa; confirme o preço e o horário diretamente com o local.":"Precio estimado; confirma el precio y el horario directamente con el lugar.","Toque em um pino pra ver o nome no mapa, ou nele na lista pra ver todos os detalhes.":"Toca un marcador para ver el lugar.","O ponto azul indica sua localização.":"El punto azul indica tu ubicación.","Locais encontrados":"Lugares encontrados","Ramon Viana — Guia e Fotógrafo":"Ramon Viana — Guía turístico y fotógrafo","Passeios guiados e ensaios fotográficos pelos pontos mais bonitos do Rio. Veja pacotes, fotos e feche seu passeio direto no site.":"Visitas guiadas y sesiones de fotos en los lugares más bonitos de Río. Consulta los paquetes y reserva directamente en el sitio web.","Abrir ramonguiarj.com":"Abrir ramonguiarj.com","Se a prévia acima não carregar, use o botão \"Abrir ramonguiarj.com\" para ver o site completo.":"Si la vista previa no carga, usa el botón para abrir el sitio web completo.","Programação sujeita a mudanças — confira sempre nas redes da casa antes de sair.":"La programación puede cambiar. Consulta las redes sociales del lugar antes de ir.","Buscar lugares e categorias":"Buscar lugares y categorías..."
+  }
+};
+const GUIDE_TRANSLATIONS = {
+  en: {
+    essentials: [
+      { title: "Getting around", text: "Use ride-hailing apps (Uber/99), especially at night. They are a practical option for getting around the city." },
+      { title: "Money and payments", text: "Cards are accepted in most places. Carry some cash for beaches and street markets." },
+      { title: "Sun and beach", text: "Use sunscreen, bring water, and keep belongings with you on the sand." },
+      { title: "Safety", text: "These are popular visitor areas. Keep your phone and valuables out of sight when walking." }
+    ],
+    transport: [
+      { title: "Metro", text: "Lines 1 and 2 connect the South Zone (Ipanema, Copacabana, Botafogo) with downtown and the North Zone. Pay with a RioCard or contactless card." },
+      { title: "Train (SuperVia)", text: "Connects Central do Brasil downtown with the suburbs and Baixada Fluminense. Useful for some trips outside the beach area." },
+      { title: "VLT", text: "The light rail runs through the historic center, including Praça Mauá, Candelária, and Cinelândia. It is useful for exploring downtown." },
+      { title: "Bus", text: "Buses cover the whole city, though trips can be slower and harder to navigate. Use RioCard or cash and keep valuables out of sight." },
+      { title: "Táxi.Rio app", text: "The city’s official taxi app uses registered drivers and regulated fares. It can be a good alternative to Uber or 99." },
+      { title: "Uber / 99", text: "Easy options for visitors. Request rides in the app and check the route and fare before confirming. At night, request from inside a venue." },
+      { title: "Electric scooter", text: "Shared scooters are available in downtown and the South Zone. Use the operator’s app and ride in bike lanes where possible. Riders must be 18+." },
+      { title: "Bike Itaú", text: "Shared orange bikes have stations around the South Zone and downtown. Use the Bike Itaú app to find a bike and return it to any station." }
+    ]
+  },
+  es: {
+    essentials: [
+      { title: "Cómo desplazarse", text: "Usa aplicaciones de transporte (Uber/99), especialmente por la noche. Son una opción práctica para moverse por la ciudad." },
+      { title: "Dinero y pagos", text: "Se aceptan tarjetas en la mayoría de los lugares. Lleva algo de efectivo para la playa y los mercados." },
+      { title: "Sol y playa", text: "Usa protector solar, lleva agua y mantén tus pertenencias contigo en la arena." },
+      { title: "Seguridad", text: "Estas zonas son populares entre visitantes. Evita mostrar el teléfono y objetos de valor al caminar." }
+    ],
+    transport: [
+      { title: "Metro", text: "Las líneas 1 y 2 conectan la Zona Sur (Ipanema, Copacabana, Botafogo) con el centro y la Zona Norte. Puedes pagar con RioCard o tarjeta sin contacto." },
+      { title: "Tren (SuperVia)", text: "Conecta Central do Brasil, en el centro, con los suburbios y Baixada Fluminense. Es útil para algunas excursiones fuera de la zona de playas." },
+      { title: "VLT", text: "El tranvía ligero recorre el centro histórico, incluida Praça Mauá, Candelária y Cinelândia. Es útil para conocer el centro." },
+      { title: "Autobús", text: "Los autobuses cubren toda la ciudad, aunque el trayecto puede ser más lento y difícil de seguir. Usa RioCard o efectivo y no exhibas objetos de valor." },
+      { title: "App Táxi.Rio", text: "La aplicación oficial de taxis de la ciudad trabaja con conductores registrados y tarifas reguladas. Puede ser una alternativa a Uber o 99." },
+      { title: "Uber / 99", text: "Opciones sencillas para visitantes. Pide el viaje en la app y revisa la ruta y el precio antes de confirmar. Por la noche, solicítalo desde dentro de un local." },
+      { title: "Patinete eléctrico", text: "Hay patinetes compartidos en el centro y la Zona Sur. Usa la app del operador y circula por el carril bici cuando sea posible. Edad mínima: 18 años." },
+      { title: "Bike Itaú", text: "Las bicicletas naranjas compartidas tienen estaciones por la Zona Sur y el centro. Usa la app Bike Itaú y devuelve la bicicleta en cualquier estación." }
+    ]
+  }
+};
+const PLACE_TRANSLATIONS = {
+  en: {
+    60: { tip: "Visit early in the morning to avoid the crowds.", historia: "Opened in 1931, this Art Deco monument was designed by engineer Heitor da Silva Costa with sculptures by French artist Paul Landowski. It is one of the New Seven Wonders of the World.", price: "Paid — van or train and admission; approx. R$ 100–150 (reference)" },
+    61: { tip: "The cable car offers 360° views; late afternoon is a great time to visit.", historia: "Opened in 1912, the cable car was one of the world’s first urban aerial tramways. It climbs in two stages to the summit.", price: "Paid — round-trip cable car; approx. R$ 150–200 (reference)" },
+    62: { tip: "Climb to the top for photos with fewer people.", historia: "Created by Chilean artist Jorge Selarón from 1990, the staircase has 215 steps covered with tiles from more than 60 countries and became a symbol of Rio’s street art.", price: "Free" },
+    63: { tip: "Free viewpoint with views of Christ the Redeemer and Sugarloaf; arrive early.", historia: "A public viewpoint on Dona Marta Hill, famous for its side-by-side views of Christ the Redeemer and Sugarloaf. It has appeared in films and music videos.", price: "Free" },
+    64: { tip: "Views of Ipanema and Leblon; a lovely spot for sunset.", historia: "A viewpoint on the way up to Vidigal, with a wide view of the Ipanema and Leblon coastline.", price: "Free" },
+    65: { tip: "Rio’s best-known sunset spot; arrive about 45 minutes early.", historia: "A rocky outcrop between Copacabana and Ipanema where locals gather every evening to applaud the sunset.", price: "Free" },
+    66: { tip: "A peaceful visit, and you may spot small monkeys.", historia: "Founded in 1808 by Dom João VI to acclimatize plants brought from the East Indies, the garden has more than 6,500 species, including its famous imperial palm avenue.", price: "Paid — approx. R$ 20–60 (reference; free on selected dates)" },
+    67: { tip: "South America’s largest aquarium; a good option on a rainy day.", historia: "Opened in 2016 in Rio’s revitalized port district, it is the largest marine aquarium in South America.", price: "Paid — approx. R$ 100–150 (reference)" },
+    68: { tip: "Arrive at 5 a.m. to watch the sunrise in near solitude.", historia: "A small cove at the foot of Sugarloaf and the starting point for the historic trail up Morro da Urca.", price: "Free" },
+    69: { tip: "Futuristic architecture on the waterfront at Praça Mauá.", historia: "Designed by Spanish architect Santiago Calatrava, it opened in 2015 at Praça Mauá as part of the port district’s renewal.", price: "Paid — approx. R$ 30–40 (reference; free on Tuesdays)" },
+    70: { tip: "Brazilian contemporary art.", historia: "Opened in 2013, the museum combines a former colonial mansion with a modern building and focuses on Rio’s art and history.", price: "Paid — approx. R$ 20–25 (reference; free on Tuesdays)" },
+    71: { tip: "A collection of classical Brazilian art.", historia: "Founded in 1937 in a 1908 Neoclassical building, it houses one of Brazil’s largest art collections.", price: "Paid — approx. R$ 8–15 (reference; free on Sundays)" },
+    72: { tip: "Rotating exhibitions in a striking historic building.", historia: "Once the headquarters of Banco do Brasil, this landmark historic building became a cultural center in 1989.", price: "Free for most exhibitions" },
+    73: { tip: "Impressive stained-glass windows and a striking cone-shaped design.", historia: "Built between 1964 and 1979, this cone-shaped cathedral was inspired by Mayan pyramids and can hold up to 20,000 people standing.", price: "Free" },
+    74: { tip: "One of downtown Rio’s most beautiful and historic churches.", historia: "Construction began in 1775. It is one of Rio’s most richly decorated historic churches, with a grand dome and Neoclassical interior.", price: "Free" }
+  },
+  es: {
+    60: { tip: "Ve temprano por la mañana para evitar las multitudes.", historia: "Inaugurado en 1931, este monumento art déco fue diseñado por el ingeniero Heitor da Silva Costa con esculturas del artista francés Paul Landowski. Es una de las Nuevas Siete Maravillas del Mundo.", price: "De pago — transporte en van o tren y entrada; aprox. R$ 100–150 (referencia)" },
+    61: { tip: "El teleférico ofrece vistas de 360°; el final de la tarde es un buen momento para ir.", historia: "Inaugurado en 1912, fue uno de los primeros teleféricos urbanos del mundo. Sube en dos tramos hasta la cima.", price: "De pago — teleférico ida y vuelta; aprox. R$ 150–200 (referencia)" },
+    62: { tip: "Sube hasta arriba para tomar fotos con menos gente.", historia: "Creada desde 1990 por el artista chileno Jorge Selarón, tiene 215 escalones revestidos con azulejos de más de 60 países y se convirtió en un símbolo del arte urbano de Río.", price: "Gratis" },
+    63: { tip: "Mirador gratuito con vistas al Cristo y al Pan de Azúcar; llega temprano.", historia: "Mirador público en el Morro Dona Marta, famoso por mostrar el Cristo y el Pan de Azúcar lado a lado. Ha aparecido en películas y videoclips.", price: "Gratis" },
+    64: { tip: "Vistas de Ipanema y Leblon; un lugar ideal para el atardecer.", historia: "Mirador en la subida hacia Vidigal, con una amplia vista de la costa de Ipanema y Leblon.", price: "Gratis" },
+    65: { tip: "El lugar más conocido de Río para ver el atardecer; llega unos 45 minutos antes.", historia: "Formación rocosa entre Copacabana e Ipanema donde los vecinos se reúnen al final de la tarde para aplaudir la puesta de sol.", price: "Gratis" },
+    66: { tip: "Un paseo tranquilo; quizá veas pequeños monos.", historia: "Fundado en 1808 por Dom João VI para aclimatar especies de las Indias, reúne más de 6.500 especies y su famosa alameda de palmeras imperiales.", price: "De pago — aprox. R$ 20–60 (referencia; gratis en fechas específicas)" },
+    67: { tip: "El acuario marino más grande de Sudamérica; buena opción para un día lluvioso.", historia: "Inaugurado en 2016 en la zona portuaria renovada, es el acuario marino más grande de Sudamérica.", price: "De pago — aprox. R$ 100–150 (referencia)" },
+    68: { tip: "Llega a las 5:00 para ver el amanecer casi a solas.", historia: "Pequeña ensenada al pie del Pan de Azúcar y punto de partida del sendero histórico que sube al Morro da Urca.", price: "Gratis" },
+    69: { tip: "Arquitectura futurista junto al paseo marítimo de Praça Mauá.", historia: "Diseñado por el arquitecto español Santiago Calatrava, abrió en 2015 en Praça Mauá como parte de la renovación portuaria.", price: "De pago — aprox. R$ 30–40 (referencia; gratis los martes)" },
+    70: { tip: "Arte brasileño contemporáneo.", historia: "Inaugurado en 2013, combina un antiguo palacete colonial con un edificio moderno y se dedica al arte y la historia de Río.", price: "De pago — aprox. R$ 20–25 (referencia; gratis los martes)" },
+    71: { tip: "Colección clásica de artistas brasileños.", historia: "Fundado en 1937 en un edificio neoclásico de 1908, alberga una de las mayores colecciones de arte de Brasil.", price: "De pago — aprox. R$ 8–15 (referencia; gratis los domingos)" },
+    72: { tip: "Exposiciones temporales en un impresionante edificio histórico.", historia: "Fue sede del Banco do Brasil y se convirtió en centro cultural en 1989, en uno de los edificios históricos más bellos del centro.", price: "Gratis en la mayoría de las exposiciones" },
+    73: { tip: "Vitrales impresionantes y una llamativa arquitectura cónica.", historia: "Construida entre 1964 y 1979, su forma cónica se inspira en las pirámides mayas y tiene capacidad para 20.000 personas de pie.", price: "Gratis" },
+    74: { tip: "Una de las iglesias más bellas e históricas del centro de Río.", historia: "Su construcción comenzó en 1775. Es una de las iglesias históricas más ornamentadas de Río, con una gran cúpula y un interior neoclásico.", price: "Gratis" }
   }
 };
 const translate = (lang, text) => COPY[lang]?.[text] || text;
@@ -428,13 +502,23 @@ export default function RioGuideApp() {
   const [showIntro, setShowIntro] = useState(true);
   const [view, setView] = useState("lista");
   const [searchText, setSearchText] = useState("");
-  const savedPlaces = useMemo(() => PLACES.filter((p) => savedIds.includes(p.id)), [savedIds]);
+  const [filterNeighborhood, setFilterNeighborhood] = useState("");
+  const [highRatingOnly, setHighRatingOnly] = useState(false);
+  const [onlyWithPrice, setOnlyWithPrice] = useState(false);
+  const [priceBand, setPriceBand] = useState("");
+  const [showFilters, setShowFilters] = useState(false);
+  const savedPlaces = useMemo(() => savedIds.map((id) => PLACES.find((p) => p.id === id)).filter(Boolean), [savedIds]);
   const toggleSaved = (id) => setSavedIds((prev) => prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]);
+  const moveSaved = (id, offset) => setSavedIds((prev) => { const from = prev.indexOf(id); const to = from + offset; if (from < 0 || to < 0 || to >= prev.length) return prev; const next = [...prev]; [next[from], next[to]] = [next[to], next[from]]; return next; });
+  const itineraryRoute = savedPlaces.length === 1 ? `https://www.google.com/maps/search/?api=1&query=${savedPlaces[0].lat},${savedPlaces[0].lng}` : savedPlaces.length > 1 ? `https://www.google.com/maps/dir/?api=1&origin=${savedPlaces[0].lat},${savedPlaces[0].lng}&destination=${savedPlaces[savedPlaces.length - 1].lat},${savedPlaces[savedPlaces.length - 1].lng}${savedPlaces.length > 2 ? `&waypoints=${savedPlaces.slice(1, -1).map((p) => `${p.lat},${p.lng}`).join("%7C")}` : ""}` : "";
+  const neighborhoods = useMemo(() => [...new Set([...searchBase, ...search.results].map((p) => p.bairro).filter(Boolean))].sort((a, b) => a.localeCompare(b, language)), [searchBase, search.results, language]);
+  const guideCopy = (kind, index, field, fallback) => GUIDE_TRANSLATIONS[language]?.[kind]?.[index]?.[field] || fallback;
+  const placeText = (place, field) => PLACE_TRANSLATIONS[language]?.[place.id]?.[field] || place[field];
   useEffect(() => { try { localStorage.setItem("apprio-saved-places", JSON.stringify(savedIds)); } catch {} }, [savedIds]);
   const searchBase = useMemo(() => PLACES.filter((p) => p.cat === activeTopic && (activeTopic !== "alimentacao" || activeSub === "todos" || (p.meals || []).includes(activeSub)) && (!["turismo", "servicos", "compras"].includes(activeTopic) || activeSub === "todos" || p.sub === activeSub)), [activeTopic, activeSub]);
   const search = useSmartSearch(searchBase, activeTopic, language);
   const setAppLanguage = (value) => { setLanguage(value); try { localStorage.setItem("apprio-language", value); } catch {} };
-  useEffect(() => { setSearchText(""); search.buscar(""); }, [activeTopic, activeSub]);
+  useEffect(() => { setSearchText(""); setFilterNeighborhood(""); search.buscar(""); }, [activeTopic, activeSub]);
   useEffect(() => { if (searchText.trim()) search.buscar(searchText); }, [language]);
 
   const requestLocation = () => {
@@ -451,6 +535,10 @@ export default function RioGuideApp() {
 
   const list = useMemo(() => {
     let items = search.results.filter((p) => p.cat === activeTopic);
+    if (filterNeighborhood) items = items.filter((p) => p.bairro === filterNeighborhood);
+    if (highRatingOnly) items = items.filter((p) => Number(p.rating || 0) >= 4.5);
+    if (onlyWithPrice) items = items.filter((p) => Boolean(p.price));
+    if (priceBand) items = items.filter((p) => { const match = String(p.price || "").match(/R\$\s*([\d.]+(?:,\d{1,2})?)/i); if (!match) return false; const minimum = Number(match[1].replace(/\./g, "").replace(",", ".")); return priceBand === "under100" ? minimum < 100 : priceBand === "100to500" ? minimum >= 100 && minimum <= 500 : minimum > 500; });
     if (activeTopic === "alimentacao" && activeSub !== "todos") {
       items = items.filter((p) => p.meals && p.meals.includes(activeSub));
     }
@@ -461,7 +549,7 @@ export default function RioGuideApp() {
       return items.map((p) => ({ ...p, dist: haversine(coords.lat, coords.lng, p.lat, p.lng) })).sort((a, b) => a.dist - b.dist);
     }
     return items.sort((a, b) => b.rating - a.rating);
-  }, [activeTopic, activeSub, coords, search.results]);
+  }, [activeTopic, activeSub, coords, search.results, filterNeighborhood, highRatingOnly, onlyWithPrice, priceBand]);
 
   const currentTopic = TOPICS.find((t) => t.id === activeTopic);
   const subtabs = SUBTABS[activeTopic];
@@ -495,6 +583,8 @@ export default function RioGuideApp() {
         .bottomNav { position: fixed; z-index: 40; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 9px 10px calc(9px + env(safe-area-inset-bottom)); background: rgba(4,47,53,0.97); border-top: 1px solid rgba(225,220,198,0.14); backdrop-filter: blur(12px); }
         .bottomNav button { position: relative; border: 0; background: transparent; color: rgba(225,220,198,0.62); display: flex; flex-direction: column; align-items: center; gap: 4px; font: 600 10px "Work Sans", sans-serif; padding: 3px 2px; cursor: pointer; }
         .bottomNav button.active { color: #76C339; }
+        :focus-visible { outline: 3px solid #E8B86D !important; outline-offset: 2px; }
+         .card[role="button"]:focus-visible { outline: 3px solid #E8B86D; outline-offset: 2px; }
       `}</style>
 
       {/* Top bar with brand */}
@@ -512,7 +602,7 @@ export default function RioGuideApp() {
 
       {showIntro && activeTab === "explorar" && (
         <div style={{ margin: "18px 20px 0", background: "#0C3A3E", borderRadius: 16, padding: 20, position: "relative", border: "1px solid rgba(118,195,57,0.25)" }}>
-          <button onClick={() => setShowIntro(false)} style={{ position: "absolute", top: 12, right: 12, background: "rgba(225,220,198,0.1)", border: "none", borderRadius: "50%", width: 26, height: 26, color: "#E1DCC6", cursor: "pointer" }}>
+          <button onClick={() => setShowIntro(false)} aria-label={language === "en" ? "Close welcome message" : language === "es" ? "Cerrar bienvenida" : "Fechar mensagem de boas-vindas"} style={{ position: "absolute", top: 12, right: 12, background: "rgba(225,220,198,0.1)", border: "none", borderRadius: "50%", width: 26, height: 26, color: "#E1DCC6", cursor: "pointer" }}>
             <X size={14} />
           </button>
           <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
@@ -527,9 +617,9 @@ export default function RioGuideApp() {
         </div>
       )}
 
-      <div style={{ marginTop: 22 }}><WaveDivider /></div>
+      {(activeTab === "explorar" || activeTab === "mapa") && <div style={{ marginTop: 22 }}><WaveDivider /></div>}
 
-      <div style={{ padding: "16px 20px 4px" }}>
+      {(activeTab === "explorar" || activeTab === "mapa") && <div style={{ padding: "16px 20px 4px" }}>
         {locStatus !== "ok" ? (
           <button className="locBtn" onClick={requestLocation}>
             {locStatus === "loading" ? (<><Loader2 size={16} style={{ animation: "spin 1s linear infinite" }} /> {tx("Localizando...")}</>) : (<><Navigation size={16} /> {tx("Usar minha localização para ver distâncias")}</>)}
@@ -540,7 +630,7 @@ export default function RioGuideApp() {
           </div>
         )}
         {locStatus === "error" && <p style={{ color: "#E27D60", fontSize: 12, marginTop: 8 }}>{tx("Não consegui acessar sua localização. Ative a permissão de GPS e tente de novo.")}</p>}
-      </div>
+      </div>}
 
       {(activeTab === "explorar" || activeTab === "mapa") && <><div className="scrollRow" style={{ display: "flex", gap: 8, overflowX: "auto", padding: "12px 20px" }}>
         {TOPICS.map((t) => (
@@ -564,16 +654,16 @@ export default function RioGuideApp() {
         <div style={{ padding: "10px 20px" }}>
           <div style={{ background: "#0C3A3E", borderRadius: 16, padding: 20, border: "1px solid rgba(118,195,57,0.25)", marginBottom: 16 }}>
             <img src={LOGO_MONOGRAM} alt="Ramon Viana" style={{ width: 56, height: 56, borderRadius: "50%", objectFit: "cover", marginBottom: 12 }} />
-            <div style={{ fontFamily: "'Fraunces', serif", fontSize: 19, fontWeight: 600, marginBottom: 6 }}>Ramon Viana — Guia e Fotógrafo</div>
+            <div style={{ fontFamily: "'Fraunces', serif", fontSize: 19, fontWeight: 600, marginBottom: 6 }}>{tx("Ramon Viana — Guia e Fotógrafo")}</div>
             <p style={{ fontSize: 13.5, lineHeight: 1.6, color: "rgba(225,220,198,0.75)", margin: "0 0 16px" }}>
-              Passeios guiados e ensaios fotográficos pelos pontos mais bonitos do Rio. Veja pacotes, fotos e feche seu passeio direto no site.
+              {tx("Passeios guiados e ensaios fotográficos pelos pontos mais bonitos do Rio. Veja pacotes, fotos e feche seu passeio direto no site.")}
             </p>
             <a
               href="https://ramonguiarj.com"
               target="_blank" rel="noreferrer"
               style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "#76C339", color: "#042F35", padding: "13px 16px", borderRadius: 12, fontWeight: 700, fontSize: 14, textDecoration: "none" }}
             >
-              <Navigation size={15} /> Abrir ramonguiarj.com
+              <Navigation size={15} /> {tx("Abrir ramonguiarj.com")}
             </a>
           </div>
 
@@ -585,7 +675,7 @@ export default function RioGuideApp() {
             />
           </div>
           <p style={{ fontSize: 11, color: "rgba(225,220,198,0.4)", marginTop: 8 }}>
-            Se a prévia acima não carregar, use o botão "Abrir ramonguiarj.com" para ver o site completo.
+            {tx('Se a prévia acima não carregar, use o botão "Abrir ramonguiarj.com" para ver o site completo.')}
           </p>
         </div>
       )}
@@ -596,9 +686,9 @@ export default function RioGuideApp() {
             <div key={i} style={{ background: "#0C3A3E", borderRadius: 14, padding: 16, marginBottom: 12, border: "1px solid rgba(225,220,198,0.08)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
                 <span style={{ fontSize: 20 }}>{m.icon}</span>
-                <span style={{ fontFamily: "'Fraunces', serif", fontSize: 16, fontWeight: 600 }}>{m.title}</span>
+                <span style={{ fontFamily: "'Fraunces', serif", fontSize: 16, fontWeight: 600 }}>{guideCopy("transport", i, "title", m.title)}</span>
               </div>
-              <p style={{ fontSize: 13, lineHeight: 1.5, color: "rgba(225,220,198,0.75)", margin: 0 }}>{m.text}</p>
+              <p style={{ fontSize: 13, lineHeight: 1.5, color: "rgba(225,220,198,0.78)", margin: 0 }}>{guideCopy("transport", i, "text", m.text)}</p>
             </div>
           ))}
         </div>
@@ -622,7 +712,7 @@ export default function RioGuideApp() {
             </div>
           ))}
           <p style={{ fontSize: 11, color: "rgba(225,220,198,0.4)", marginTop: 4 }}>
-            Programação sujeita a mudanças — confira sempre nas redes da casa antes de sair.
+            {tx("Programação sujeita a mudanças — confira sempre nas redes da casa antes de sair.")}
           </p>
         </div>
       )}
@@ -640,10 +730,48 @@ export default function RioGuideApp() {
       )}
 
       </>}
-      {activeTab === "roteiro" ? (<div style={{ padding: "18px 20px" }}><h2>{language === "en" ? "My itinerary" : language === "es" ? "Mi itinerario" : "Meu roteiro"}</h2>{savedPlaces.length === 0 ? <p>{language === "en" ? "Your itinerary is empty. Explore places and save some." : language === "es" ? "Tu itinerario está vacío. Explora lugares y guarda algunos." : "Seu roteiro está vazio. Explore lugares e salve alguns."}</p> : savedPlaces.map((p) => <div key={p.id} className="card" onClick={() => setSelected(p)}><strong>{p.name}</strong><div>{p.bairro}</div><button onClick={(e) => { e.stopPropagation(); toggleSaved(p.id); }}>{language === "en" ? "Remove" : language === "es" ? "Quitar" : "Remover"}</button></div>)}</div>) : activeTab === "dicas" ? (<div style={{ padding: "18px 20px" }}><h2>{tx("Dicas essenciais pra quem chega agora")}</h2><p>{tx("Informações gerais: preços, horários e avaliações podem mudar. Confirme os detalhes diretamente com o estabelecimento antes de sair.")}</p>{ESSENTIALS.map((e, i) => <div key={i} className="card"><span>{e.icon} {e.title}</span><div>{e.text}</div></div>)}{TRANSPORT_MODES.map((m,i)=><div key={i} className="card"><span>{m.icon} {m.title}</span><div>{m.text}</div></div>)}</div>) : (activeTopic === "sobre" || activeTopic === "transporte" || (activeTopic === "diversao" && activeSub === "agenda")) ? null : <><div style={{ padding: "10px 20px 0" }}><input type="search" value={searchText} maxLength={120} onChange={(e) => { setSearchText(e.target.value); search.buscar(e.target.value); }} placeholder={tx("Buscar por nome, bairro ou tipo...")} aria-label={tx("Buscar por nome, bairro ou tipo...")} style={{ width: "100%", padding: "12px 14px", borderRadius: 12, border: "1px solid rgba(225,220,198,0.2)", background: "#0C3A3E", color: "#E1DCC6", fontSize: 14 }} />{search.carregando && <p role="status" style={{ fontSize: 12 }}>{tx("Localizando...")}</p>}{search.erro && <p role="alert" style={{ color: "#E27D60", fontSize: 12 }}>{search.erro}</p>}{search.origem === "google" && <p style={{ color: "#E8B86D", fontSize: 12 }}>{language === "en" ? "Google Maps data. Confirm current details before visiting." : language === "es" ? "Datos de Google Maps. Confirma los detalles antes de ir." : "Dados do Google Maps. Confirme as informações antes de visitar."}</p>}</div>{view === "mapa" ? (
+      {activeTab === "roteiro" ? (<div style={{ padding: "18px 20px" }}>
+        <h2 style={{ margin: "0 0 6px", fontFamily: "'Fraunces', serif" }}>{language === "en" ? "My itinerary" : language === "es" ? "Mi itinerario" : "Meu roteiro"}</h2>
+        <p style={{ color: "rgba(225,220,198,0.75)", fontSize: 13, lineHeight: 1.5, margin: "0 0 14px" }}>{tx("Reordene os lugares com as setas. A rota abre no Google Maps.")}</p>
+        {savedPlaces.length === 0 ? <div className="card">{language === "en" ? "Your itinerary is empty. Explore places and save some." : language === "es" ? "Tu itinerario está vacío. Explora lugares y guarda algunos." : "Seu roteiro está vazio. Explore lugares e salve alguns."}<button onClick={() => setActiveTab("explorar")} style={{ display: "block", marginTop: 12, border: 0, borderRadius: 9, padding: "10px 12px", background: "#76C339", color: "#042F35", fontWeight: 700 }}>{language === "en" ? "Explore places" : language === "es" ? "Explorar lugares" : "Explorar lugares"}</button></div> : <>
+          {savedPlaces.map((p, i) => <div key={p.id} className="card" style={{ display: "flex", alignItems: "center", gap: 10, cursor: "default" }}>
+            <div style={{ width: 28, height: 28, flexShrink: 0, borderRadius: 99, display: "grid", placeItems: "center", background: "#76C339", color: "#042F35", fontSize: 12, fontWeight: 700 }}>{i + 1}</div>
+            <button onClick={() => setSelected(p)} style={{ flex: 1, minWidth: 0, textAlign: "left", border: 0, padding: 0, background: "transparent", color: "#E1DCC6", cursor: "pointer" }}><strong>{p.name}</strong><div style={{ color: "rgba(225,220,198,0.72)", marginTop: 4, fontSize: 12 }}>{p.bairro}{p.price ? " · " + placeText(p, "price") : ""}</div></button>
+            <div style={{ display: "grid", gap: 3 }}>
+              <button type="button" aria-label={language === "en" ? "Move up" : language === "es" ? "Subir" : "Mover para cima"} disabled={i === 0} onClick={() => moveSaved(p.id, -1)} style={{ minWidth: 34, minHeight: 30, borderRadius: 7, border: "1px solid rgba(225,220,198,0.25)", background: "#042F35", color: i === 0 ? "rgba(225,220,198,0.4)" : "#E1DCC6", cursor: i === 0 ? "default" : "pointer" }}>↑</button>
+              <button type="button" aria-label={language === "en" ? "Move down" : language === "es" ? "Bajar" : "Mover para baixo"} disabled={i === savedPlaces.length - 1} onClick={() => moveSaved(p.id, 1)} style={{ minWidth: 34, minHeight: 30, borderRadius: 7, border: "1px solid rgba(225,220,198,0.25)", background: "#042F35", color: i === savedPlaces.length - 1 ? "rgba(225,220,198,0.4)" : "#E1DCC6", cursor: i === savedPlaces.length - 1 ? "default" : "pointer" }}>↓</button>
+              <button type="button" aria-label={language === "en" ? "Remove place" : language === "es" ? "Quitar lugar" : "Remover lugar"} onClick={() => toggleSaved(p.id)} style={{ minWidth: 34, minHeight: 30, borderRadius: 7, border: "1px solid rgba(225,220,198,0.25)", background: "#042F35", color: "#E1DCC6", cursor: "pointer" }}>×</button>
+            </div>
+          </div>)}
+          {itineraryRoute && <a href={itineraryRoute} target="_blank" rel="noreferrer" style={{ display: "flex", justifyContent: "center", marginTop: 8, borderRadius: 12, padding: 13, background: "#76C339", color: "#042F35", textDecoration: "none", fontWeight: 700 }}>{tx("Abrir rota do roteiro")} ↗</a>}
+        </>}
+      </div>) : activeTab === "dicas" ? (<div style={{ padding: "18px 20px" }}><h2>{tx("Dicas essenciais pra quem chega agora")}</h2><p>{tx("Informações gerais: preços, horários e avaliações podem mudar. Confirme os detalhes diretamente com o estabelecimento antes de sair.")}</p>{ESSENTIALS.map((e, i) => <div key={i} className="card"><span style={{ fontWeight: 700 }}>{e.icon} {guideCopy("essentials", i, "title", e.title)}</span><div style={{ marginTop: 6, lineHeight: 1.5, color: "rgba(225,220,198,0.78)" }}>{guideCopy("essentials", i, "text", e.text)}</div></div>)}{TRANSPORT_MODES.map((m,i)=><div key={i} className="card"><span style={{ fontWeight: 700 }}>{m.icon} {guideCopy("transport", i, "title", m.title)}</span><div style={{ marginTop: 6, lineHeight: 1.5, color: "rgba(225,220,198,0.78)" }}>{guideCopy("transport", i, "text", m.text)}</div></div>)}</div>) : (activeTopic === "sobre" || activeTopic === "transporte" || (activeTopic === "diversao" && activeSub === "agenda")) ? null : <><div style={{ padding: "10px 20px 0" }}><input type="search" value={searchText} maxLength={120} onChange={(e) => { setSearchText(e.target.value); search.buscar(e.target.value); }} placeholder={tx("Buscar por nome, bairro ou tipo...")} aria-label={tx("Buscar por nome, bairro ou tipo...")} style={{ width: "100%", padding: "12px 14px", borderRadius: 12, border: "1px solid rgba(225,220,198,0.2)", background: "#0C3A3E", color: "#E1DCC6", fontSize: 14 }} />{search.carregando && <p role="status" style={{ fontSize: 12 }}>{tx("Localizando...")}</p>}{search.erro && <p role="alert" style={{ color: "#E27D60", fontSize: 12 }}>{search.erro}</p>}{search.origem === "google" && <p style={{ color: "#E8B86D", fontSize: 12 }}>{language === "en" ? "Google Maps data. Confirm current details before visiting." : language === "es" ? "Datos de Google Maps. Confirma los detalles antes de ir." : "Dados do Google Maps. Confirme as informações antes de visitar."}</p>}</div>
+        <div style={{ padding: "8px 20px 0" }}>
+          <button type="button" aria-expanded={showFilters} onClick={() => setShowFilters((v) => !v)} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "9px 2px", border: 0, background: "transparent", color: "#76C339", fontWeight: 700, cursor: "pointer" }}>
+            <span>{showFilters ? tx("Ocultar filtros") : tx("Mostrar filtros")}</span><span aria-hidden="true">{showFilters ? "−" : "+"}</span>
+          </button>
+          {showFilters && <div style={{ display: "grid", gap: 9, padding: "10px 12px 12px", background: "#0C3A3E", borderRadius: 12, marginBottom: 8 }}>
+            <label style={{ display: "grid", gap: 5, fontSize: 12, color: "#E1DCC6" }}>
+              {language === "en" ? "Neighborhood" : language === "es" ? "Barrio" : "Bairro"}
+              <select value={filterNeighborhood} onChange={(e) => setFilterNeighborhood(e.target.value)} style={{ width: "100%", padding: 9, borderRadius: 8, background: "#042F35", color: "#E1DCC6", border: "1px solid rgba(225,220,198,0.3)" }}>
+                <option value="">{tx("Qualquer bairro")}</option>{neighborhoods.map((n) => <option key={n} value={n}>{n}</option>)}
+              </select>
+            </label>
+            <label style={{ display: "grid", gap: 5, fontSize: 12, color: "#E1DCC6" }}>{tx("Faixa de preço")}
+              <select value={priceBand} onChange={(e) => setPriceBand(e.target.value)} style={{ width: "100%", padding: 9, borderRadius: 8, background: "#042F35", color: "#E1DCC6", border: "1px solid rgba(225,220,198,0.3)" }}>
+                <option value="">{tx("Qualquer faixa")}</option><option value="under100">{tx("Até R$ 100")}</option><option value="100to500">{tx("R$ 100 a R$ 500")}</option><option value="over500">{tx("Mais de R$ 500")}</option>
+              </select>
+            </label>
+            <p style={{ margin: 0, fontSize: 11, lineHeight: 1.4, color: "rgba(225,220,198,0.76)" }}>{tx("Os valores são estimativas e podem variar. Confirme antes de sair.")}</p>
+            <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, cursor: "pointer" }}><input type="checkbox" checked={highRatingOnly} onChange={(e) => setHighRatingOnly(e.target.checked)} />{tx("Avaliação 4,5 ou mais")}</label>
+            <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, cursor: "pointer" }}><input type="checkbox" checked={onlyWithPrice} onChange={(e) => setOnlyWithPrice(e.target.checked)} />{tx("Somente locais com preço informado")}</label>
+            {(filterNeighborhood || highRatingOnly || onlyWithPrice || priceBand) && <button type="button" onClick={() => { setFilterNeighborhood(""); setHighRatingOnly(false); setOnlyWithPrice(false); setPriceBand(""); }} style={{ justifySelf: "start", border: 0, background: "transparent", color: "#76C339", fontWeight: 700, cursor: "pointer" }}>{tx("Limpar filtros")}</button>}
+          </div>}
+        </div>
+        {view === "mapa" ? (
         <div style={{ padding: "10px 20px" }}>
           <MapView items={list} coords={coords} onSelect={openFromMap} />
-          <p style={{ fontSize: 11, color: "rgba(225,220,198,0.4)", marginTop: 8 }}>Toque em um pino pra ver o nome no mapa, ou nele na lista pra ver todos os detalhes. {coords ? "O ponto azul é você." : ""}</p>
+          <p style={{ fontSize: 11, color: "rgba(225,220,198,0.4)", marginTop: 8 }}>{tx("Toque em um pino pra ver o nome no mapa, ou nele na lista pra ver todos os detalhes.")} {coords ? tx("O ponto azul indica sua localização.") : ""}</p>
         </div>
       ) : (
         <div style={{ padding: "10px 20px" }}>
@@ -656,7 +784,7 @@ export default function RioGuideApp() {
                     <MapPin size={12} /> {p.bairro}
                   </div>
                   {p.price && (
-                    <div style={{ marginTop: 3, fontSize: 11.5, color: "#E8B86D", fontWeight: 600 }}>{p.price}</div>
+                    <div style={{ marginTop: 3, fontSize: 11.5, color: "#E8B86D", fontWeight: 600 }}>{placeText(p, "price")}</div>
                   )}
                 </div>
                 <div style={{ textAlign: "right", marginLeft: 10 }}>
@@ -686,7 +814,7 @@ export default function RioGuideApp() {
             <div style={{ fontFamily: "'Fraunces', serif", fontSize: 22, fontWeight: 600, marginBottom: 6 }}>{selected.name}</div>
             <div style={{ color: "rgba(225,220,198,0.6)", fontSize: 13, marginBottom: selected.price ? 4 : 14 }}>{selected.bairro}</div>
             {selected.price && (
-              <div style={{ color: "#E8B86D", fontSize: 13, fontWeight: 700, marginBottom: 14 }}>{selected.price}</div>
+              <div style={{ color: "#E8B86D", fontSize: 13, fontWeight: 700, marginBottom: 14 }}>{placeText(selected, "price")}</div>
             )}
             <div style={{ display: "flex", gap: 16, marginBottom: 14 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 4, color: "#76C339", fontWeight: 700 }}>
@@ -698,11 +826,11 @@ export default function RioGuideApp() {
                 </div>
               )}
             </div>
-            <p style={{ fontSize: 14, lineHeight: 1.5, color: "#E1DCC6", marginBottom: selected.historia ? 10 : 16 }}>{selected.tip}</p>
+            <p style={{ fontSize: 14, lineHeight: 1.5, color: "#E1DCC6", marginBottom: selected.historia ? 10 : 16 }}>{placeText(selected, "tip")}</p>
             {selected.historia && (
               <div style={{ background: "rgba(225,220,198,0.06)", borderRadius: 10, padding: 12, marginBottom: 16 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: "#76C339", letterSpacing: 0.5, textTransform: "uppercase", marginBottom: 4 }}>{tx("Um pouco de história")}</div>
-                <p style={{ fontSize: 13, lineHeight: 1.5, color: "rgba(225,220,198,0.8)", margin: 0 }}>{selected.historia}</p>
+                <p style={{ fontSize: 13, lineHeight: 1.5, color: "rgba(225,220,198,0.8)", margin: 0 }}>{placeText(selected, "historia")}</p>
               </div>
             )}
             {Number.isInteger(selected.id) && <button onClick={() => toggleSaved(selected.id)} style={{ marginTop: 10, width: "100%", border: "1px solid rgba(225,220,198,0.25)", background: "rgba(225,220,198,0.06)", color: "#E1DCC6", padding: "11px 14px", borderRadius: 12, fontWeight: 700, fontSize: 14, cursor: "pointer" }}>{savedIds.includes(selected.id) ? (language === "en" ? "Remove from my itinerary" : language === "es" ? "Quitar de mi itinerario" : "Remover do meu roteiro") : (language === "en" ? "Save to my itinerary" : language === "es" ? "Guardar en mi itinerario" : "Salvar no meu roteiro")}</button>}
