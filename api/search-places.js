@@ -60,7 +60,7 @@ export default async function handler(req, res) {
       lng: place.location?.longitude ?? null,
       origem: "google",
     }));
-    res.setHeader("Cache-Control", "public, s-maxage=300, stale-while-revalidate=600");
+    res.setHeader("Cache-Control", "no-store");
     return res.status(200).json({ lugares });
   } catch {
     return res.status(502).json({ erro: "Busca externa indisponível." });
