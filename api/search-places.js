@@ -1,85 +1,68 @@
-// api/search-places.js
-// Rota serverless da Vercel: /api/search-places?q=texto&categoria=cafe
-//
-// Usada como FALLBACK: só é chamada quando a busca na lista local (JSON/banco
-// do app) não encontrou nada. Faz uma Text Search real no Google Places para
-// que a tela nunca fique em branco.
-//
-// Configuração necessária na Vercel:
-//   Project Settings > Environment Variables > GOOGLE_PLACES_API_KEY
-// (nunca exponha essa chave no front-end — por isso ela mora numa function)
+const CATEGORIAS = {
+  hospedagem: "hotel",
+  alimentacao: "restaurant",
+  diversao: "live music venue OR bar",
+  turismo: "tourist attraction",
+  praias: "beach",
+  compras: "shopping",
+  transporte: "public transport",
+  servicos: "tourist services",
+};
+const IDIOMAS = { pt: "pt-BR", en: "en", es: "es" };
 
 export default async function handler(req, res) {
-  const { q, categoria } = req.query;
+  if (req.method !== "GET") {
+    res.setHeader("Allow", "GET");
+    return res.status(405).json({ erro: "Método não permitido." });
+  }
 
-  if (!q || q.trim().length < 2) {
-    return res.status(400).json({ erro: 'Informe um termo de busca (q).' });
+  const q = typeof req.query?.q === "string" ? req.query.q.trim() : "";
+  const categoria = typeof req.query?.categoria === "string" ? req.query.categoria : "";
+  const idioma = typeof req.query?.idioma === "string" ? req.query.idioma : "pt";
+
+  if (q.length < 3 || q.length > 120) {
+    return res.status(400).json({ erro: "A busca deve ter entre 3 e 120 caracteres." });
+  }
+  if (!Object.hasOwn(CATEGORIAS, categoria) || !Object.hasOwn(IDIOMAS, idioma)) {
+    return res.status(400).json({ erro: "Categoria ou idioma inválido." });
   }
 
   const apiKey = process.env.GOOGLE_PLACES_API_KEY;
-  if (!apiKey) {
-    return res.status(500).json({ erro: 'GOOGLE_PLACES_API_KEY não configurada.' });
-  }
-
-  // Ancora a busca no Rio de Janeiro e, opcionalmente, guia o tipo de lugar
-  // pela categoria da aba (cafe da manhã, restaurante, diversão, hospedagem...)
-  const termosPorCategoria = {
-    cafe: 'café da manhã',
-    restaurante: 'restaurante',
-    hospedagem: 'hotel',
-    diversao: 'bar ou casa de show',
-    praia: 'praia',
-  };
-  const sufixo = termosPorCategoria[categoria] ? ` ${termosPorCategoria[categoria]}` : '';
-  const query = `${q}${sufixo} Rio de Janeiro`;
-
-  const url = new URL('https://places.googleapis.com/v1/places:searchText');
+  if (!apiKey) return res.status(503).json({ erro: "Busca externa indisponível." });
 
   try {
-    const resp = await fetch(url, {
-      method: 'POST',
+    const response = await fetch("https://places.googleapis.com/v1/places:searchText", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'X-Goog-Api-Key': apiKey,
-        // Só pedimos os campos que a UI realmente usa, pra economizar cota
-        'X-Goog-FieldMask':
-          'places.id,places.displayName,places.formattedAddress,places.rating,' +
-          'places.userRatingCount,places.location,places.priceLevel,places.currentOpeningHours',
+        "Content-Type": "application/json",
+        "X-Goog-Api-Key": apiKey,
+        "X-Goog-FieldMask": "places.id,places.displayName,places.formattedAddress,places.rating,places.location",
       },
       body: JSON.stringify({
-        textQuery: query,
-        languageCode: 'pt-BR',
-        regionCode: 'BR',
-        // Viés de localização: Zona Sul + Centro do Rio
+        textQuery: `${q} ${CATEGORIAS[categoria]} Rio de Janeiro`,
+        languageCode: IDIOMAS[idioma],
+        regionCode: "BR",
         locationBias: {
-          circle: {
-            center: { latitude: -22.955, longitude: -43.19 },
-            radius: 12000,
-          },
+          circle: { center: { latitude: -22.955, longitude: -43.19 }, radius: 12000 },
         },
       }),
+      signal: AbortSignal.timeout(8000),
     });
 
-    if (!resp.ok) {
-      const detalhe = await resp.text();
-      return res.status(resp.status).json({ erro: 'Falha na busca do Google Places', detalhe });
-    }
-
-    const data = await resp.json();
-    const lugares = (data.places || []).map((p) => ({
-      id: p.id,
-      nome: p.displayName?.text ?? '',
-      endereco: p.formattedAddress ?? '',
-      avaliacao: p.rating ?? null,
-      numAvaliacoes: p.userRatingCount ?? 0,
-      lat: p.location?.latitude ?? null,
-      lng: p.location?.longitude ?? null,
-      aberto: p.currentOpeningHours?.openNow ?? null,
-      origem: 'google', // marca visual: "resultado do Google, ainda não conferido pelo RamonGuia"
+    if (!response.ok) return res.status(502).json({ erro: "Busca externa indisponível." });
+    const data = await response.json();
+    const lugares = (data.places || []).filter((place) => Number.isFinite(place.location?.latitude) && Number.isFinite(place.location?.longitude)).map((place) => ({
+      id: place.id,
+      nome: place.displayName?.text ?? "",
+      endereco: place.formattedAddress ?? "",
+      avaliacao: place.rating ?? null,
+      lat: place.location?.latitude ?? null,
+      lng: place.location?.longitude ?? null,
+      origem: "google",
     }));
-
+    res.setHeader("Cache-Control", "public, s-maxage=300, stale-while-revalidate=600");
     return res.status(200).json({ lugares });
-  } catch (err) {
-    return res.status(500).json({ erro: 'Erro ao consultar o Google Places', detalhe: err.message });
+  } catch {
+    return res.status(502).json({ erro: "Busca externa indisponível." });
   }
 }
