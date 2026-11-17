@@ -412,7 +412,7 @@ const TOPIC_BLURBS = {
   en: { hospedagem: "Well-rated hotels in central Rio and the South Zone, with estimated price ranges.", alimentacao: "From breakfast to dinner: cafés and restaurants around the city.", diversao: "Live music and local nightlife. Check venue schedules before heading out.", turismo: "Rio landmarks with brief visitor information.", praias: "Beaches from the South Zone to Barra and the western coast.", compras: "Markets, souvenir shops, and shopping malls.", transporte: "Ways to get around Rio: metro, train, VLT, buses, and taxis.", servicos: "Airports, bus station, hospitals, and currency exchange.", sobre: "Learn about Ramon’s guided tours and photography experiences." },
   es: { hospedagem: "Hoteles bien valorados en el centro y la Zona Sur, con precios estimados.", alimentacao: "Del desayuno a la cena: cafeterías y restaurantes por la ciudad.", diversao: "Música en vivo y vida nocturna. Consulta la programación antes de ir.", turismo: "Lugares emblemáticos de Río con información para visitantes.", praias: "Playas desde la Zona Sur hasta Barra y la costa oeste.", compras: "Mercados, tiendas de recuerdos y centros comerciales.", transporte: "Cómo moverse por Río: metro, tren, VLT, autobuses y taxis.", servicos: "Aeropuertos, estación de autobuses, hospitales y cambio de moneda.", sobre: "Conoce los paseos guiados y las experiencias fotográficas de Ramon." }
 };
-function RioGuideApp() {
+export default function RioGuideApp() {
   const [language, setLanguage] = useState(() => {
     try { return ["pt", "en", "es"].includes(localStorage.getItem("apprio-language")) ? localStorage.getItem("apprio-language") : "pt"; }
     catch { return "pt"; }
