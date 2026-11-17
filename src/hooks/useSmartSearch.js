@@ -1,94 +1,96 @@
-// src/hooks/useSmartSearch.js
-//
-// Hook genérico de busca pra usar em QUALQUER aba do app
-// (café da manhã, restaurantes, hotéis, diversão, praias...).
-//
-// Fluxo:
-//  1) filtra a lista local (texto simples em nome/bairro/tags)
-//  2) se NADA local combinar, busca no Google Places (fallback) — a tela
-//     nunca fica em branco
-//
-// (Sem IA por enquanto — dá pra adicionar depois reativando o ai-search.js
-// e a função buscarComIA, se quiser no futuro.)
-//
-// Uso:
-//   const { resultados, carregando, origem, buscar } = useSmartSearch(listaLocalDeCafes, 'cafe');
-//   <input onChange={(e) => buscar(e.target.value)} />
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { useCallback, useMemo, useState } from 'react';
-
-function normalizar(txt = '') {
-  return txt
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, ''); // remove acentos pra busca mais tolerante
+function normalizar(valor = "") {
+  return String(valor).toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-function filtroLocalSimples(lista, termo) {
-  const termoNorm = normalizar(termo);
+function filtrar(lista, termo) {
+  const consulta = normalizar(termo.trim());
   return lista.filter((item) => {
-    const alvo = normalizar(`${item.nome} ${item.bairro} ${(item.tags || []).join(' ')}`);
-    return alvo.includes(termoNorm);
+    const tags = Array.isArray(item.tags) ? item.tags.join(" ") : "";
+    const texto = [item.name, item.nome, item.bairro, item.address, item.endereco, tags].filter(Boolean).join(" ");
+    return normalizar(texto).includes(consulta);
   });
 }
 
-export function useSmartSearch(listaLocal, categoria) {
-  const [termo, setTermo] = useState('');
+export function useSmartSearch(listaLocal, categoria, idioma = "pt") {
+  const [termo, setTermo] = useState("");
   const [resultados, setResultados] = useState(listaLocal);
   const [carregando, setCarregando] = useState(false);
-  const [origem, setOrigem] = useState('local'); // 'local' | 'google' | 'vazio'
+  const [origem, setOrigem] = useState("local");
   const [erro, setErro] = useState(null);
+  const timerRef = useRef(null);
+  const controllerRef = useRef(null);
+  const sequenceRef = useRef(0);
 
-  const listaOrdenadaPorNota = useMemo(
-    () => [...listaLocal].sort((a, b) => (b.avaliacao || 0) - (a.avaliacao || 0)),
+  useEffect(() => () => { clearTimeout(timerRef.current); controllerRef.current?.abort(); }, []);
+
+  const ordenados = useMemo(
+    () => [...listaLocal].sort((a, b) => (b.rating || b.avaliacao || 0) - (a.rating || a.avaliacao || 0)),
     [listaLocal]
   );
 
-  const buscar = useCallback(
-    async (novoTermo) => {
-      setTermo(novoTermo);
-      setErro(null);
+  const buscar = useCallback((novoTermo) => {
+    const consulta = String(novoTermo || "").slice(0, 120);
+    setTermo(consulta);
+    setErro(null);
+    clearTimeout(timerRef.current);
+    controllerRef.current?.abort();
+    const sequence = ++sequenceRef.current;
 
-      if (!novoTermo || novoTermo.trim().length === 0) {
-        setResultados(listaOrdenadaPorNota);
-        setOrigem('local');
-        return;
-      }
+    if (!consulta.trim()) {
+      setResultados(ordenados);
+      setOrigem("local");
+      setCarregando(false);
+      return;
+    }
 
-      // 1) tenta o filtro local primeiro (rápido, sem custo de API)
-      const localMatch = filtroLocalSimples(listaLocal, novoTermo);
-      if (localMatch.length > 0) {
-        setResultados(localMatch);
-        setOrigem('local');
-        return;
-      }
+    const locais = filtrar(listaLocal, consulta);
+    if (locais.length) {
+      setResultados(locais);
+      setOrigem("local");
+      setCarregando(false);
+      return;
+    }
 
-      // 2) nada bateu localmente -> pergunta pro Google Places, pra tela
-      //    nunca ficar em branco
-      setCarregando(true);
+    setResultados([]);
+    setOrigem("vazio");
+    setCarregando(consulta.trim().length >= 3);
+    if (consulta.trim().length < 3) return;
+
+    timerRef.current = setTimeout(async () => {
+      const controller = new AbortController();
+      controllerRef.current = controller;
       try {
-        const resp = await fetch(
-          `/api/search-places?q=${encodeURIComponent(novoTermo)}&categoria=${categoria}`
-        );
-        const data = await resp.json();
-
-        if (resp.ok && data.lugares?.length > 0) {
-          setResultados(data.lugares);
-          setOrigem('google');
-        } else {
-          setResultados([]);
-          setOrigem('vazio');
+        const params = new URLSearchParams({ q: consulta.trim(), categoria, idioma });
+        const response = await fetch(`/api/search-places?${params}`, { signal: controller.signal });
+        const data = await response.json();
+        if (sequence !== sequenceRef.current) return;
+        if (!response.ok) throw new Error("search_failed");
+        const lugares = (data.lugares || []).map((place) => ({
+          id: place.id,
+          name: place.nome || "",
+          cat: categoria,
+          bairro: place.endereco || "",
+          lat: place.lat,
+          lng: place.lng,
+          rating: place.avaliacao || 0,
+          price: "",
+          tip: "",
+          origem: "google",
+        }));
+        setResultados(lugares);
+        setOrigem(lugares.length ? "google" : "vazio");
+      } catch (error) {
+        if (error.name !== "AbortError" && sequence === sequenceRef.current) {
+          setErro(idioma === "en" ? "Search is temporarily unavailable. Please try again." : idioma === "es" ? "La búsqueda no está disponible ahora. Inténtalo de nuevo." : "A busca está temporariamente indisponível. Tente novamente.");
+          setOrigem("vazio");
         }
-      } catch (e) {
-        setErro('Não foi possível buscar agora. Tente novamente.');
-        setResultados([]);
-        setOrigem('vazio');
       } finally {
-        setCarregando(false);
+        if (sequence === sequenceRef.current) setCarregando(false);
       }
-    },
-    [listaLocal, listaOrdenadaPorNota, categoria]
-  );
+    }, 350);
+  }, [listaLocal, ordenados, categoria, idioma]);
 
-  return { termo, resultados, carregando, origem, erro, buscar };
+  return { termo, resultados, results: resultados, carregando, origem, erro, buscar };
 }
