@@ -538,7 +538,7 @@ export default function RioGuideApp() {
     if (filterNeighborhood) items = items.filter((p) => p.bairro === filterNeighborhood);
     if (highRatingOnly) items = items.filter((p) => Number(p.rating || 0) >= 4.5);
     if (onlyWithPrice) items = items.filter((p) => Boolean(p.price));
-    if (priceBand) items = items.filter((p) => { const match = String(p.price || "").match(/R\$\s*([\d.]+(?:,\d{1,2})?)/i); if (!match) return false; const minimum = Number(match[1].replace(/\./g, "").replace(",", ".")); return priceBand === "under100" ? minimum < 100 : priceBand === "100to500" ? minimum >= 100 && minimum <= 500 : minimum > 500; });
+    if (priceBand) items = items.filter((p) => { const text = String(p.price || ""); if (/gr[aá]tuit[oa]|gr[aá]tis/i.test(text)) return priceBand === "under100"; const match = text.match(/R\$\s*([\d.]+(?:,\d{1,2})?)/i); if (!match) return false; const minimum = Number(match[1].replace(/\./g, "").replace(",", ".")); return priceBand === "under100" ? minimum < 100 : priceBand === "100to500" ? minimum >= 100 && minimum <= 500 : minimum > 500; });
     if (activeTopic === "alimentacao" && activeSub !== "todos") {
       items = items.filter((p) => p.meals && p.meals.includes(activeSub));
     }
@@ -732,7 +732,7 @@ export default function RioGuideApp() {
       </>}
       {activeTab === "roteiro" ? (<div style={{ padding: "18px 20px" }}>
         <h2 style={{ margin: "0 0 6px", fontFamily: "'Fraunces', serif" }}>{language === "en" ? "My itinerary" : language === "es" ? "Mi itinerario" : "Meu roteiro"}</h2>
-        <p style={{ color: "rgba(225,220,198,0.75)", fontSize: 13, lineHeight: 1.5, margin: "0 0 14px" }}>{tx("Reordene os lugares com as setas. A rota abre no Google Maps.")}</p>
+        <p style={{ color: "rgba(225,220,198,0.75)", fontSize: 13, lineHeight: 1.5, margin: "0 0 14px" }}>{savedPlaces.length ? tx("Reordene os lugares com as setas. A rota abre no Google Maps.") : language === "en" ? "Save a few places while exploring to build your route." : language === "es" ? "Guarda algunos lugares mientras exploras para crear tu ruta." : "Salve alguns lugares durante a exploração para montar sua rota."}</p>
         {savedPlaces.length === 0 ? <div className="card">{language === "en" ? "Your itinerary is empty. Explore places and save some." : language === "es" ? "Tu itinerario está vacío. Explora lugares y guarda algunos." : "Seu roteiro está vazio. Explore lugares e salve alguns."}<button onClick={() => setActiveTab("explorar")} style={{ display: "block", marginTop: 12, border: 0, borderRadius: 9, padding: "10px 12px", background: "#76C339", color: "#042F35", fontWeight: 700 }}>{language === "en" ? "Explore places" : language === "es" ? "Explorar lugares" : "Explorar lugares"}</button></div> : <>
           {savedPlaces.map((p, i) => <div key={p.id} className="card" style={{ display: "flex", alignItems: "center", gap: 10, cursor: "default" }}>
             <div style={{ width: 28, height: 28, flexShrink: 0, borderRadius: 99, display: "grid", placeItems: "center", background: "#76C339", color: "#042F35", fontSize: 12, fontWeight: 700 }}>{i + 1}</div>
