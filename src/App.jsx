@@ -419,6 +419,8 @@ export default function RioGuideApp() {
   });
   const tx = (text) => translate(language, text);
   const [activeTopic, setActiveTopic] = useState("turismo");
+  const [activeTab, setActiveTab] = useState("explorar");
+  const [savedIds, setSavedIds] = useState(() => { try { return JSON.parse(localStorage.getItem("apprio-saved-places") || "[]").filter(Number.isInteger); } catch { return []; } });
   const [activeSub, setActiveSub] = useState("todos");
   const [coords, setCoords] = useState(null);
   const [locStatus, setLocStatus] = useState("idle");
@@ -426,6 +428,9 @@ export default function RioGuideApp() {
   const [showIntro, setShowIntro] = useState(true);
   const [view, setView] = useState("lista");
   const [searchText, setSearchText] = useState("");
+  const savedPlaces = useMemo(() => PLACES.filter((p) => savedIds.includes(p.id)), [savedIds]);
+  const toggleSaved = (id) => setSavedIds((prev) => prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]);
+  useEffect(() => { try { localStorage.setItem("apprio-saved-places", JSON.stringify(savedIds)); } catch {} }, [savedIds]);
   const searchBase = useMemo(() => PLACES.filter((p) => p.cat === activeTopic && (activeTopic !== "alimentacao" || activeSub === "todos" || (p.meals || []).includes(activeSub)) && (!["turismo", "servicos", "compras"].includes(activeTopic) || activeSub === "todos" || p.sub === activeSub)), [activeTopic, activeSub]);
   const search = useSmartSearch(searchBase, activeTopic, language);
   const setAppLanguage = (value) => { setLanguage(value); try { localStorage.setItem("apprio-language", value); } catch {} };
@@ -470,7 +475,7 @@ export default function RioGuideApp() {
   };
 
   return (
-    <div lang={language === "pt" ? "pt-BR" : language} style={{ minHeight: "100vh", background: "#042F35", fontFamily: "'Work Sans', sans-serif", color: "#E1DCC6", paddingBottom: 40 }}>
+    <div lang={language === "pt" ? "pt-BR" : language} style={{ minHeight: "100vh", background: "#042F35", fontFamily: "'Work Sans', sans-serif", color: "#E1DCC6", paddingBottom: 96 }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600;700&display=swap');
         * { box-sizing: border-box; }
@@ -487,6 +492,9 @@ export default function RioGuideApp() {
         .viewBtn { border: none; background: transparent; color: rgba(225,220,198,0.6); padding: 7px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 5px; cursor: pointer; }
         .viewBtn.active { background: #76C339; color: #042F35; }
         .scrollRow::-webkit-scrollbar { display: none; }
+        .bottomNav { position: fixed; z-index: 40; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; padding: 9px 10px calc(9px + env(safe-area-inset-bottom)); background: rgba(4,47,53,0.97); border-top: 1px solid rgba(225,220,198,0.14); backdrop-filter: blur(12px); }
+        .bottomNav button { position: relative; border: 0; background: transparent; color: rgba(225,220,198,0.62); display: flex; flex-direction: column; align-items: center; gap: 4px; font: 600 10px "Work Sans", sans-serif; padding: 3px 2px; cursor: pointer; }
+        .bottomNav button.active { color: #76C339; }
       `}</style>
 
       {/* Top bar with brand */}
@@ -502,7 +510,7 @@ export default function RioGuideApp() {
         </div>
       </div>
 
-      {showIntro && (
+      {showIntro && activeTab === "explorar" && (
         <div style={{ margin: "18px 20px 0", background: "#0C3A3E", borderRadius: 16, padding: 20, position: "relative", border: "1px solid rgba(118,195,57,0.25)" }}>
           <button onClick={() => setShowIntro(false)} style={{ position: "absolute", top: 12, right: 12, background: "rgba(225,220,198,0.1)", border: "none", borderRadius: "50%", width: 26, height: 26, color: "#E1DCC6", cursor: "pointer" }}>
             <X size={14} />
@@ -519,7 +527,7 @@ export default function RioGuideApp() {
         </div>
       )}
 
-      <div style={{ marginTop: 22 }}><WaveDivider /></div>
+      {activeTab !== "roteiro" && activeTab !== "dicas" && <><div style={{ marginTop: 22 }}><WaveDivider /></div>
 
       <div style={{ padding: "16px 20px 4px" }}>
         {locStatus !== "ok" ? (
@@ -534,13 +542,13 @@ export default function RioGuideApp() {
         {locStatus === "error" && <p style={{ color: "#E27D60", fontSize: 12, marginTop: 8 }}>{tx("Não consegui acessar sua localização. Ative a permissão de GPS e tente de novo.")}</p>}
       </div>
 
-      <div className="scrollRow" style={{ display: "flex", gap: 8, overflowX: "auto", padding: "12px 20px" }}>
+      {(activeTab === "explorar" || activeTab === "mapa") && <><div className="scrollRow" style={{ display: "flex", gap: 8, overflowX: "auto", padding: "12px 20px" }}>
         {TOPICS.map((t) => (
           <button key={t.id} className={"chip " + (activeTopic === t.id ? "active" : "")} onClick={() => changeTopic(t.id)}>{t.icon} {tx(t.label)}</button>
         ))}
       </div>
 
-      {currentTopic && (
+      {activeTab === "explorar" && currentTopic && (
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12, padding: "0 20px", margin: "4px 0 4px" }}>
           <p style={{ margin: 0, fontSize: 13, color: "rgba(225,220,198,0.6)", flex: 1 }}>{language === "pt" ? currentTopic.blurb : TOPIC_BLURBS[language]?.[activeTopic] || translate(language, currentTopic.label)}</p>
           {activeTopic !== "sobre" && activeTopic !== "transporte" && !(activeTopic === "diversao" && activeSub === "agenda") && (
@@ -552,7 +560,7 @@ export default function RioGuideApp() {
         </div>
       )}
 
-      {activeTopic === "sobre" && (
+      {activeTab === "explorar" && activeTopic === "sobre" && (
         <div style={{ padding: "10px 20px" }}>
           <div style={{ background: "#0C3A3E", borderRadius: 16, padding: 20, border: "1px solid rgba(118,195,57,0.25)", marginBottom: 16 }}>
             <img src={LOGO_MONOGRAM} alt="Ramon Viana" style={{ width: 56, height: 56, borderRadius: "50%", objectFit: "cover", marginBottom: 12 }} />
@@ -582,7 +590,7 @@ export default function RioGuideApp() {
         </div>
       )}
 
-      {activeTopic === "transporte" && (
+      {activeTab === "explorar" && activeTopic === "transporte" && (
         <div style={{ padding: "10px 20px" }}>
           {TRANSPORT_MODES.map((m, i) => (
             <div key={i} style={{ background: "#0C3A3E", borderRadius: 14, padding: 16, marginBottom: 12, border: "1px solid rgba(225,220,198,0.08)" }}>
@@ -596,7 +604,7 @@ export default function RioGuideApp() {
         </div>
       )}
 
-      {activeTopic === "diversao" && activeSub === "agenda" && (
+      {activeTab === "explorar" && activeTopic === "diversao" && activeSub === "agenda" && (
         <div style={{ padding: "10px 20px" }}>
           {AGENDA_DIVERSAO.map((d, i) => (
             <div key={i} style={{ marginBottom: 16 }}>
@@ -619,7 +627,7 @@ export default function RioGuideApp() {
         </div>
       )}
 
-      {activeTopic !== "sobre" && activeTopic !== "transporte" && subtabs && (
+      {activeTab !== "roteiro" && activeTab !== "dicas" && activeTopic !== "sobre" && activeTopic !== "transporte" && subtabs && (
         <div className="scrollRow" style={{ display: "flex", gap: 6, overflowX: "auto", padding: "6px 20px 4px" }}>
           {subtabs.map((s) => (
             <button key={s.id} className={"subchip " + (activeSub === s.id ? "active" : "")} onClick={() => setActiveSub(s.id)}>
@@ -631,7 +639,8 @@ export default function RioGuideApp() {
         </div>
       )}
 
-      {(activeTopic === "sobre" || activeTopic === "transporte" || (activeTopic === "diversao" && activeSub === "agenda")) ? null : <><div style={{ padding: "10px 20px 0" }}><input type="search" value={searchText} maxLength={120} onChange={(e) => { setSearchText(e.target.value); search.buscar(e.target.value); }} placeholder={tx("Buscar por nome, bairro ou tipo...")} aria-label={tx("Buscar por nome, bairro ou tipo...")} style={{ width: "100%", padding: "12px 14px", borderRadius: 12, border: "1px solid rgba(225,220,198,0.2)", background: "#0C3A3E", color: "#E1DCC6", fontSize: 14 }} />{search.carregando && <p role="status" style={{ fontSize: 12 }}>{tx("Localizando...")}</p>}{search.erro && <p role="alert" style={{ color: "#E27D60", fontSize: 12 }}>{search.erro}</p>}{search.origem === "google" && <p style={{ color: "#E8B86D", fontSize: 12 }}>{language === "en" ? "Google Maps data. Confirm current details before visiting." : language === "es" ? "Datos de Google Maps. Confirma los detalles antes de ir." : "Dados do Google Maps. Confirme as informações antes de visitar."}</p>}</div>{view === "mapa" ? (
+      </>}
+      {activeTab === "roteiro" ? (<div style={{ padding: "18px 20px" }}><h2>{language === "en" ? "My itinerary" : language === "es" ? "Mi itinerario" : "Meu roteiro"}</h2>{savedPlaces.length === 0 ? <p>{language === "en" ? "Your itinerary is empty. Explore places and save some." : language === "es" ? "Tu itinerario está vacío. Explora lugares y guarda algunos." : "Seu roteiro está vazio. Explore lugares e salve alguns."}</p> : savedPlaces.map((p) => <div key={p.id} className="card" onClick={() => setSelected(p)}><strong>{p.name}</strong><div>{p.bairro}</div><button onClick={(e) => { e.stopPropagation(); toggleSaved(p.id); }}>{language === "en" ? "Remove" : language === "es" ? "Quitar" : "Remover"}</button></div>)}</div>) : activeTab === "dicas" ? (<div style={{ padding: "18px 20px" }}><h2>{tx("Dicas essenciais pra quem chega agora")}</h2><p>{tx("Informações gerais: preços, horários e avaliações podem mudar. Confirme os detalhes diretamente com o estabelecimento antes de sair.")}</p>{ESSENTIALS.map((e, i) => <div key={i} className="card"><span>{e.icon} {e.title}</span><div>{e.text}</div></div>)}{TRANSPORT_MODES.map((m,i)=><div key={i} className="card"><span>{m.icon} {m.title}</span><div>{m.text}</div></div>)}</div>) : ((activeTopic === "sobre" || activeTopic === "transporte" || (activeTopic === "diversao" && activeSub === "agenda")) ? null : <><div style={{ padding: "10px 20px 0" }}><input type="search" value={searchText} maxLength={120} onChange={(e) => { setSearchText(e.target.value); search.buscar(e.target.value); }} placeholder={tx("Buscar por nome, bairro ou tipo...")} aria-label={tx("Buscar por nome, bairro ou tipo...")} style={{ width: "100%", padding: "12px 14px", borderRadius: 12, border: "1px solid rgba(225,220,198,0.2)", background: "#0C3A3E", color: "#E1DCC6", fontSize: 14 }} />{search.carregando && <p role="status" style={{ fontSize: 12 }}>{tx("Localizando...")}</p>}{search.erro && <p role="alert" style={{ color: "#E27D60", fontSize: 12 }}>{search.erro}</p>}{search.origem === "google" && <p style={{ color: "#E8B86D", fontSize: 12 }}>{language === "en" ? "Google Maps data. Confirm current details before visiting." : language === "es" ? "Datos de Google Maps. Confirma los detalles antes de ir." : "Dados do Google Maps. Confirme as informações antes de visitar."}</p>}</div>{view === "mapa" ? (
         <div style={{ padding: "10px 20px" }}>
           <MapView items={list} coords={coords} onSelect={openFromMap} />
           <p style={{ fontSize: 11, color: "rgba(225,220,198,0.4)", marginTop: 8 }}>Toque em um pino pra ver o nome no mapa, ou nele na lista pra ver todos os detalhes. {coords ? "O ponto azul é você." : ""}</p>
@@ -666,23 +675,9 @@ export default function RioGuideApp() {
         </div>)}
       </>}
 
-      <div style={{ padding: "8px 20px 0" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-          <Info size={16} color="#76C339" />
-          <span style={{ fontFamily: "'Fraunces', serif", fontSize: 16, fontWeight: 600 }}>{tx("Dicas essenciais pra quem chega agora")}</span>
-        </div>
-        <p style={{ fontSize: 11, lineHeight: 1.5, color: "rgba(225,220,198,0.55)", margin: "0 0 12px" }}>{tx("Informações gerais: preços, horários e avaliações podem mudar. Confirme os detalhes diretamente com o estabelecimento antes de sair.")}</p>
-        {ESSENTIALS.map((e, i) => (
-          <div key={i} style={{ display: "flex", gap: 12, marginBottom: 12, background: "#0C3A3E", borderRadius: 12, padding: 14 }}>
-            <span style={{ fontSize: 20 }}>{e.icon}</span>
-            <div>
-              <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 2 }}>{e.title}</div>
-              <div style={{ fontSize: 12.5, color: "rgba(225,220,198,0.65)", lineHeight: 1.4 }}>{e.text}</div>
-            </div>
-          </div>
-        ))}
-      </div>
 
+
+      </>}
       {selected && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(4,47,53,0.88)", display: "flex", alignItems: "flex-end", zIndex: 50 }} onClick={() => setSelected(null)}>
           <div style={{ background: "#0C3A3E", width: "100%", borderRadius: "20px 20px 0 0", padding: 24, position: "relative" }} onClick={(e) => e.stopPropagation()}>
@@ -711,6 +706,7 @@ export default function RioGuideApp() {
                 <p style={{ fontSize: 13, lineHeight: 1.5, color: "rgba(225,220,198,0.8)", margin: 0 }}>{selected.historia}</p>
               </div>
             )}
+            {Number.isInteger(selected.id) && <button onClick={() => toggleSaved(selected.id)} style={{ marginTop: 10, width: "100%", border: "1px solid rgba(225,220,198,0.25)", background: "rgba(225,220,198,0.06)", color: "#E1DCC6", padding: "11px 14px", borderRadius: 12, fontWeight: 700, fontSize: 14, cursor: "pointer" }}>{savedIds.includes(selected.id) ? (language === "en" ? "Remove from my itinerary" : language === "es" ? "Quitar de mi itinerario" : "Remover do meu roteiro") : (language === "en" ? "Save to my itinerary" : language === "es" ? "Guardar en mi itinerario" : "Salvar no meu roteiro")}</button>}
             <a
               href={"https://www.google.com/maps/search/?api=1&query=" + selected.lat + "," + selected.lng}
               target="_blank" rel="noreferrer"
@@ -721,6 +717,16 @@ export default function RioGuideApp() {
           </div>
         </div>
       )}
+      <nav className="bottomNav" aria-label={language === "en" ? "Main navigation" : language === "es" ? "Navegación principal" : "Navegação principal"}>
+        {[
+          { id: "explorar", icon: <Compass size={19} />, label: language === "en" ? "Explore" : "Explorar" },
+          { id: "mapa", icon: <MapIcon size={19} />, label: language === "en" ? "Map" : "Mapa" },
+          { id: "roteiro", icon: <List size={19} />, label: language === "en" ? "My itinerary" : language === "es" ? "Mi ruta" : "Meu roteiro" },
+          { id: "dicas", icon: <Info size={19} />, label: language === "en" ? "Tips" : language === "es" ? "Consejos" : "Dicas" }
+        ].map((item) => <button key={item.id} type="button" className={activeTab === item.id ? "active" : ""} aria-current={activeTab === item.id ? "page" : undefined} onClick={() => { setActiveTab(item.id); if (item.id === "mapa") setView("mapa"); if (item.id === "explorar") setView("lista"); }}>
+          {item.icon}<span>{item.label}</span>{item.id === "roteiro" && savedIds.length > 0 && <span style={{ position: "absolute", top: 0, right: 12, background: "#76C339", color: "#042F35", borderRadius: 99, minWidth: 15, height: 15, fontSize: 9, lineHeight: "15px" }}>{savedIds.length}</span>}
+        </button>)}
+      </nav>
     </div>
   );
 }
