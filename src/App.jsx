@@ -527,7 +527,7 @@ export default function RioGuideApp() {
         </div>
       )}
 
-      {activeTab !== "roteiro" && activeTab !== "dicas" && <><div style={{ marginTop: 22 }}><WaveDivider /></div>
+      <div style={{ marginTop: 22 }}><WaveDivider /></div>
 
       <div style={{ padding: "16px 20px 4px" }}>
         {locStatus !== "ok" ? (
@@ -677,7 +677,6 @@ export default function RioGuideApp() {
 
 
 
-      </>}
       {selected && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(4,47,53,0.88)", display: "flex", alignItems: "flex-end", zIndex: 50 }} onClick={() => setSelected(null)}>
           <div style={{ background: "#0C3A3E", width: "100%", borderRadius: "20px 20px 0 0", padding: 24, position: "relative" }} onClick={(e) => e.stopPropagation()}>
